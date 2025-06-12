@@ -80,6 +80,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="NewFolder1\camara.cpp" />
+    <ClCompile Include="NewFolder1\eseena.cpp" />
+    <ClCompile Include="utilidades\vector3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="esenas\esena1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NewFolder1\camara.h" />
+    <ClInclude Include="NewFolder1\eseena.h" />
+    <ClInclude Include="utilidades\vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

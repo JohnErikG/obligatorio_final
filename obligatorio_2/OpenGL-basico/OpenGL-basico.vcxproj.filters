@@ -18,5 +18,28 @@
     <ClCompile Include="..\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NewFolder1\eseena.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilidades\vector3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NewFolder1\camara.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="esenas\esena1.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NewFolder1\eseena.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilidades\vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NewFolder1\camara.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
