@@ -1,2 +1,5 @@
-﻿  renderr.cpp
+﻿  main.cpp
+  renderr.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(15,8): warning C4101: 'vp': variable local sin referencia
+  Generando código...
   OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe
