@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <GL/glu.h>
-
+#include <vector>
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -72,7 +72,19 @@ int main(int argc, char *argv[]) {
 	GLfloat colorLuz[4] = { 1, 1, 1, 1 };
 	//FIN INICIALIZACION
 	bool textOn = true;
+	GLint vp[4];
+	int ww = 640, hh= 480;
+	std::vector<BYTE> pixels(3 * ww * hh);
+	
+	glPixelStorei(GL_PACK_ALIGNMENT, 1);
 
+	// Leer pixeles (puede ser GL_BGR para evitar invertir canales)
+
+	
+	
+	
+	
+	
 	//LOOP PRINCIPAL
 	do{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -161,10 +173,24 @@ int main(int argc, char *argv[]) {
 			}
 		}
 		//FIN MANEJO DE EVENTOS
+
 		SDL_GL_SwapWindow(win);
 	} while (!fin);
 	//FIN LOOP PRINCIPAL
 	// LIMPIEZA
+	glReadPixels(0, 0, ww, hh, GL_BGR, GL_UNSIGNED_BYTE, pixels.data());
+	FIBITMAP* bitmapp = FreeImage_ConvertFromRawBits(
+		pixels.data(),
+		ww, hh,
+		3 * ww,              // pitch
+		24,                 // bits por píxel
+		0x00FF0000,         // máscara rojo
+		0x0000FF00,         // máscara verde
+		0x000000FF,         // máscara azul
+		false               // no flip vertical
+	);
+	FreeImage_Save(FIF_PNG, bitmapp, "../imagenes/output.png", 0);
+	FreeImage_Unload(bitmap);
 	SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(win);
 	SDL_Quit();

@@ -18,13 +18,19 @@
     <ClCompile Include="..\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NewFolder1\eseena.cpp">
+    <ClCompile Include="ecena\eseena.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utilidades\vector3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NewFolder1\camara.cpp">
+    <ClCompile Include="ecena\camara.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ray_tracing\rayo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="render\renderr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +38,19 @@
     <Xml Include="esenas\esena1.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NewFolder1\eseena.h">
+    <ClInclude Include="ecena\eseena.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utilidades\vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NewFolder1\camara.h">
+    <ClInclude Include="ecena\camara.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ray_tracing\rayo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render\renderr.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
