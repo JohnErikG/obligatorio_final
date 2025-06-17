@@ -33,7 +33,13 @@ void renderr::guardado( imagen* img)
 	FreeImage_Unload(bitmapp);
 }
 
-void renderr::algoritmo()
+void renderr::algoritmo(imagen* img )
 {
+
+	for (int i = 0; i < img->getAncho(); i++) {
+		for (int j = 0; j < img->getAlto(); j++) {
+			
+		}
+	}
 
 }
