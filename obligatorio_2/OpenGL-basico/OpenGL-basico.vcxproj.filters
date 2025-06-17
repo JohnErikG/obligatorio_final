@@ -33,6 +33,15 @@
     <ClCompile Include="render\renderr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="render\imagen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="render\pixel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilidades\vector2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="esenas\esena1.xml" />
@@ -51,6 +60,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="render\renderr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render\imagen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="render\pixel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilidades\vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

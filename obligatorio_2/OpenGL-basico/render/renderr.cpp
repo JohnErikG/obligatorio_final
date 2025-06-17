@@ -7,12 +7,14 @@
 #include <conio.h>
 #include <GL/glu.h>
 #include <vector>
-	
+
+
 
 int renderr::id = 0;
-void renderr::guardado()
+void renderr::guardado( imagen* img)
 {
-	int ww = 640, hh = 480;
+	int ww = img->getAncho();
+	int hh = img->getAlto(); 
 	std::vector<BYTE> pixels(3 * ww * hh);
 
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
@@ -33,4 +35,5 @@ void renderr::guardado()
 
 void renderr::algoritmo()
 {
+
 }
