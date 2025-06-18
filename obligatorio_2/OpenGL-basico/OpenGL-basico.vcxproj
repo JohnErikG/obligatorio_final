@@ -82,6 +82,7 @@
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="ecena\camara.cpp" />
     <ClCompile Include="ecena\eseena.cpp" />
+    <ClCompile Include="luz.cpp" />
     <ClCompile Include="render\imagen.cpp" />
     <ClCompile Include="render\pixel.cpp" />
     <ClCompile Include="ray_tracing\rayo.cpp" />
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClInclude Include="ecena\camara.h" />
     <ClInclude Include="ecena\eseena.h" />
+    <ClInclude Include="luz.h" />
     <ClInclude Include="render\imagen.h" />
     <ClInclude Include="render\pixel.h" />
     <ClInclude Include="ray_tracing\rayo.h" />
