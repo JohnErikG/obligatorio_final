@@ -45,6 +45,9 @@
     <ClCompile Include="luz.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="esenas\parceo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="esenas\esena1.xml" />
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="luz.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="esenas\parceo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
