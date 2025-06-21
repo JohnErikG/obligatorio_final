@@ -1,5 +1,12 @@
-﻿  main.cpp
-  renderr.cpp
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(15,8): warning C4101: 'vp': variable local sin referencia
-  Generando código...
+﻿Debug\camara.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\eseena.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\imagen.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\luz.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\main.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\parceo.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\pixel.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\rayo.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\renderr.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\vector2.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+Debug\vector3.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
   OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe

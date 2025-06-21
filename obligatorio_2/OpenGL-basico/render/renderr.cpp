@@ -1,20 +1,13 @@
 #include "renderr.h"
-#include "SDL.h"
-#include "SDL_opengl.h"
 
-#include "FreeImage.h"
-#include <stdio.h>
-#include <conio.h>
-#include <GL/glu.h>
-#include <vector>
 
 
 
 int renderr::id = 0;
 void renderr::guardado( imagen* img)
 {
-	int ww = img->getAncho();
-	int hh = img->getAlto(); 
+	float ww = img->getAncho();
+	float hh = img->getAlto(); 
 	std::vector<BYTE> pixels(3 * ww * hh);
 
 	glPixelStorei(GL_PACK_ALIGNMENT, 1);
@@ -35,11 +28,11 @@ void renderr::guardado( imagen* img)
 
 void renderr::algoritmo(imagen* img )
 {
-
+	/*
 	for (int i = 0; i < img->getAncho(); i++) {
 		for (int j = 0; j < img->getAlto(); j++) {
 			
 		}
-	}
+	}*/
 
 }
