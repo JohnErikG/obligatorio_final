@@ -22,7 +22,7 @@ void renderr::guardado( imagen* img)
 		0x000000FF,         // máscara azul
 		false               // no flip vertical
 	);
-	FreeImage_Save(FIF_PNG, bitmapp, "../imagenes/output.png", 0);
+	FreeImage_Save(FIF_PNG, bitmapp, "../imagenes/output4.png", 0);
 	FreeImage_Unload(bitmapp);
 }
 

@@ -7,6 +7,7 @@
 #include <GL/glu.h>
 #include <vector>
 #include <../OpenGL-basico/render/renderr.h>
+#include <../OpenGL-basico/render/imagen.h>
 
 using namespace std;
 
@@ -38,8 +39,8 @@ int main(int argc, char *argv[]) {
 	SDL_Event evento;
 
 
-	
-	
+	imagen* img = new imagen();
+	renderr::guardado(img);
 	
 	
 	

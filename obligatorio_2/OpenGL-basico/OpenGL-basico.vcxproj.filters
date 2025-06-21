@@ -117,7 +117,6 @@
     <None Include="Release\OpenGL-basico.tlog\OpenGL-basico.write.1u.tlog" />
   </ItemGroup>
   <ItemGroup>
-    <Object Include="Debug\camara.obj" />
     <Object Include="Debug\eseena.obj" />
     <Object Include="Debug\imagen.obj" />
     <Object Include="Debug\luz.obj" />

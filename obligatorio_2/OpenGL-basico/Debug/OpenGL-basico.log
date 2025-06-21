@@ -1,5 +1,4 @@
-﻿Debug\camara.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
-Debug\eseena.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
+﻿Debug\eseena.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
 Debug\imagen.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
 Debug\luz.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
 Debug\main.obj : warning LNK4042: objeto especificado más de una vez; omitidos los sobrantes
