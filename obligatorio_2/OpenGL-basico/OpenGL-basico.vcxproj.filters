@@ -51,6 +51,15 @@
     <ClCompile Include="esenas\tinyxml2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="objetos\objeto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objetos\pared.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="objetos\Esfera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ecena\eseena.h">
@@ -84,6 +93,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="esenas\tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objetos\objeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objetos\pared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="objetos\Esfera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
