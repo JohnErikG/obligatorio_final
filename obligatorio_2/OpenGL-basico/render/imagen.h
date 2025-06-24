@@ -1,15 +1,15 @@
 #pragma once
 #include <vector>
 #include "pixel.h"
-enum typo
+enum tipo
 {
-	norma, reflaxion, transimision
+	normal, reflexion, refraccion
 };
 class imagen
 {
 
 private:
-	typo tipo;
+	tipo tipo;
 	unsigned int id;
 	int ancho, alto;
 	std::vector <pixel> pixeles;

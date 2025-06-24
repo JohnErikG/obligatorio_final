@@ -18,7 +18,7 @@
     <ClCompile Include="..\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ecena\eseena.cpp">
+    <ClCompile Include="ecena\escena.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="utilidades\vector3.cpp">
@@ -51,9 +51,12 @@
     <ClCompile Include="esenas\tinyxml2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utilidades\color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ecena\eseena.h">
+    <ClInclude Include="ecena\escena.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utilidades\vector3.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="esenas\tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilidades\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

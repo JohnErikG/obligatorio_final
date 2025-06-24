@@ -81,7 +81,7 @@
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="ecena\camara.cpp" />
-    <ClCompile Include="ecena\eseena.cpp" />
+    <ClCompile Include="ecena\escena.cpp" />
     <ClCompile Include="esenas\tinyxml2.cpp" />
     <ClCompile Include="luz.cpp" />
     <ClCompile Include="esenas\parceo.cpp" />
@@ -89,12 +89,13 @@
     <ClCompile Include="render\pixel.cpp" />
     <ClCompile Include="ray_tracing\rayo.cpp" />
     <ClCompile Include="render\renderr.cpp" />
+    <ClCompile Include="utilidades\color.cpp" />
     <ClCompile Include="utilidades\vector3.cpp" />
     <ClCompile Include="utilidades\vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ecena\camara.h" />
-    <ClInclude Include="ecena\eseena.h" />
+    <ClInclude Include="ecena\escena.h" />
     <ClInclude Include="esenas\tinyxml2.h" />
     <ClInclude Include="luz.h" />
     <ClInclude Include="esenas\parceo.h" />
@@ -102,6 +103,7 @@
     <ClInclude Include="render\pixel.h" />
     <ClInclude Include="ray_tracing\rayo.h" />
     <ClInclude Include="render\renderr.h" />
+    <ClInclude Include="utilidades\color.h" />
     <ClInclude Include="utilidades\vector3.h" />
     <ClInclude Include="utilidades\vector2.h" />
   </ItemGroup>
