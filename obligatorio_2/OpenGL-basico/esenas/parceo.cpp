@@ -34,7 +34,7 @@ pared* parceo::parsePared(tinyxml2::XMLElement* paredElemen)
 	const float translucido = paredElemen->FloatAttribute("translucido");
 	const float indiceRef = paredElemen->FloatAttribute("indiceRef");
 	const float reflex = paredElemen->FloatAttribute("reflex");
-	float ancho, alto;
+
 	return new pared(position, normal, alfa, reflex, translucido , indiceRef, ancho, alto);
 }
 
