@@ -1,4 +1,5 @@
 ﻿  main.cpp
+<<<<<<< HEAD
 C:\Users\Balta\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(18,50): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
   (compilando archivo de origen "../main.cpp")
   
@@ -263,3 +264,29 @@ C:\Users\Balta\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(
 C:\Users\Balta\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(17,3): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   color.cpp
   Generando código...
+=======
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(21,50): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
+  (compilando archivo de origen "../main.cpp")
+  
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(21,47): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
+  (compilando archivo de origen "../main.cpp")
+  
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\main.cpp(80,10): warning C4101: 'ren': variable local sin referencia
+  renderr.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(21,50): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
+  (compilando archivo de origen "render/renderr.cpp")
+  
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(21,47): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
+  (compilando archivo de origen "render/renderr.cpp")
+  
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(9,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(10,11): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(11,34): warning C4244: 'argumento': conversión de 'float' a 'const unsigned int'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(14,25): warning C4244: 'argumento': conversión de 'float' a 'GLsizei'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(14,21): warning C4244: 'argumento': conversión de 'float' a 'GLsizei'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(18,5): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(17,7): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\renderr.cpp(17,3): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+  Generando código...
+  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe
+>>>>>>> erik2

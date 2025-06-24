@@ -83,8 +83,11 @@
     <ClCompile Include="ecena\camara.cpp" />
     <ClCompile Include="ecena\escena.cpp" />
     <ClCompile Include="esenas\tinyxml2.cpp" />
+    <ClCompile Include="objetos\Esfera.cpp" />
     <ClCompile Include="luz.cpp" />
     <ClCompile Include="esenas\parceo.cpp" />
+    <ClCompile Include="objetos\objeto.cpp" />
+    <ClCompile Include="objetos\pared.cpp" />
     <ClCompile Include="render\imagen.cpp" />
     <ClCompile Include="render\pixel.cpp" />
     <ClCompile Include="ray_tracing\rayo.cpp" />
@@ -97,8 +100,11 @@
     <ClInclude Include="ecena\camara.h" />
     <ClInclude Include="ecena\escena.h" />
     <ClInclude Include="esenas\tinyxml2.h" />
+    <ClInclude Include="objetos\Esfera.h" />
     <ClInclude Include="luz.h" />
     <ClInclude Include="esenas\parceo.h" />
+    <ClInclude Include="objetos\pared.h" />
+    <ClInclude Include="objetos\objeto.h" />
     <ClInclude Include="render\imagen.h" />
     <ClInclude Include="render\pixel.h" />
     <ClInclude Include="ray_tracing\rayo.h" />
