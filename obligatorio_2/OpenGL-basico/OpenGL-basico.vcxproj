@@ -107,56 +107,6 @@
     <ClInclude Include="utilidades\vector3.h" />
     <ClInclude Include="utilidades\vector2.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Debug\OpenGL-basico.exe.recipe" />
-    <None Include="Debug\OpenGL-basico.tlog\CL.command.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\Cl.items.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\CL.read.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\CL.write.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\link.command.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\link.read.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\link.secondary.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\link.write.1.tlog" />
-    <None Include="Debug\OpenGL-basico.tlog\OpenGL-basico.lastbuildstate" />
-    <None Include="Debug\OpenGL-basico.tlog\unsuccessfulbuild" />
-    <None Include="Debug\vc142.idb" />
-    <None Include="Debug\vc142.pdb" />
-    <None Include="Debug\vc143.idb" />
-    <None Include="Debug\vc143.pdb" />
-    <None Include="Release\OpenGL-basico.exe.recipe" />
-    <None Include="Release\OpenGL-basico.iobj" />
-    <None Include="Release\OpenGL-basico.ipdb" />
-    <None Include="Release\OpenGL-basico.tlog\CL.command.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\CL.read.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\CL.write.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\link.command.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\link.read.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\link.write.1.tlog" />
-    <None Include="Release\OpenGL-basico.tlog\OpenGL-basico.lastbuildstate" />
-    <None Include="Release\OpenGL-basico.tlog\OpenGL-basico.write.1u.tlog" />
-    <None Include="Release\vc142.pdb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="Debug\eseena.obj" />
-    <Object Include="Debug\imagen.obj" />
-    <Object Include="Debug\luz.obj" />
-    <Object Include="Debug\main.obj" />
-    <Object Include="Debug\parceo.obj" />
-    <Object Include="Debug\pixel.obj" />
-    <Object Include="Debug\rayo.obj" />
-    <Object Include="Debug\renderr.obj" />
-    <Object Include="Debug\vector2.obj" />
-    <Object Include="Debug\vector3.obj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Debug\OpenGL-basico.Build.CppClean.log" />
-    <Text Include="Debug\OpenGL-basico.log" />
-    <Text Include="Debug\OpenGL-basico.vcxproj.FileListAbsolute.txt" />
-    <Text Include="Release\OpenGL-basico.Build.CppClean.log" />
-    <Text Include="Release\OpenGL-basico.log" />
-    <Text Include="Release\OpenGL-basico.vcxproj.FileListAbsolute.txt" />
-    <Text Include="Release\vcpkg.applocal.log" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
