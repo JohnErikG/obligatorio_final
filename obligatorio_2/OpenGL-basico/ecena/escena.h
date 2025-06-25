@@ -1,10 +1,11 @@
-﻿﻿#pragma once
+﻿#pragma once
 
 #include "camara.h"
-#include "../ray-tracing/object.h"
+#include "../objetos/objeto.h"
 #include "../render/imagen.h"
 #include "../luz.h"
 #include "SDL.h"
+#include "../esenas/parceo.h"
 
 class escena
 {
@@ -12,8 +13,8 @@ class escena
     double near_, far_;
     int ancho_, alto_;
     camara* camara_;
-    std::vector<object*> objects_;
-    std::vector<light*> lights_;
+    std::vector<objeto*> objects_;
+    std::vector<luz*> lights_;
     imagen final_;
     imagen aux_relfexion_;
     imagen aux_refraccion_;
@@ -45,10 +46,10 @@ public:
         int nivel);
     color whitted_ray_tracing(rayo& rayo, double& aux_reflectividad, double& aux_refractividad, int nivel);
     color calcular_difuso(rayo& rayo_camara, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano,
-        luz* luz) const;
+        luz* luz);
     color calcular_especular(rayo& rayo, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano, luz*
         luz);
-    color calcular_reflexion(const rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
+    color calcular_reflexion( rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
         objeto* objeto_cercano, int nivel);
     color calcular_translucidez(rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
         objeto* objeto_cercano, int nivel);

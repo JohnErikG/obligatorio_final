@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "pixel.h"
-enum tipo
+enum typo
 {
 	normal, reflexion, refraccion
 };
@@ -9,11 +9,12 @@ class imagen
 {
 
 private:
-	tipo tipo;
+	typo tipo;
 	unsigned int id;
 	int ancho, alto;
 	std::vector <pixel> pixeles;
 public :
+	explicit imagen(int ancho, int alto,std::vector<pixel>& vector, typo tipo = normal);
 	int getAncho() const { return ancho; }
 	int getAlto() const { return alto; }
 	std::vector<pixel> getPixeles() const { return pixeles; }
@@ -29,11 +30,16 @@ public :
 		{
 		case normal:
 			return "normal";
-		case reflaxion:
+		case reflexion:
 			return "reflectividad";
-		case transimision:
-			return "transimision";
+		case refraccion:
+			return "refraccion";
 		}
+	}
+	static imagen vacia(int ancho, int alto, typo tip)
+	{
+		std::vector<pixel> vacio;
+		return imagen(ancho, alto, vacio);
 	}
 };
 

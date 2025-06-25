@@ -5,6 +5,7 @@
 #include <chrono>
 #include <iostream>
 #include <sstream>
+#include"../utilidades/color.h"
 int renderr::id = 0;
 std::string get_current_timestamp()
 {
@@ -50,11 +51,7 @@ void renderr::guardado( imagen* img)
             const auto pixels = img->getPixeles();
             for (pixel pixel : pixels)
             {
-                RGBQUAD rgb;
-                rgb.rgbRed = static_cast<BYTE>(pixel.getR());
-                rgb.rgbGreen = static_cast<BYTE>(pixel.getG());
-                rgb.rgbBlue = static_cast<BYTE>(pixel.getB());
-                rgb.rgbReserved = static_cast<BYTE>(pixel.getAlfa());
+                rgb = pixel.getColor().to_rgb();
                 FreeImage_SetPixelColor(bitmap, pixel.getX(), pixel.getY(), &rgb);
             }
         }
@@ -112,12 +109,12 @@ void renderr::algoritmo(imagen* img, int maxX, SDL_Renderer* render)
         for (int y = 0; y < img->getAlto(); y++)
         {
             pixel& p = img->getpixel(x, img->getAlto() - y);
-            uint32_t rgba = (static_cast<uint8_t>(p.getR()) << 24) |
-                (static_cast<uint8_t>(p.getR()) << 16) |
-                (static_cast<uint8_t>(p.getB()) << 8) |
-                static_cast<uint8_t>(p.getAlfa());
+            color& c = p.getColor();
+            uint32_t rgba = (static_cast<uint8_t>(c.get_rojo()) << 24) |
+                (static_cast<uint8_t>(c.get_verde()) << 16) |
+                (static_cast<uint8_t>(c.get_azul()) << 8) |
+                static_cast<uint8_t>(c.get_alpha());
             pixel_data[y * img->getAncho() + x] = rgba;
-        }
     }
 
     // Crear la superficie SDL desde el buffer de píxeles

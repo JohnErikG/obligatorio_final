@@ -84,3 +84,42 @@ cilindro* parceo::parseCilindro(tinyxml2::XMLElement* cilindroElemen)
 	const float brillo = cilindroElemen->FloatAttribute("brillo");
 	return new cilindro(pos, color , alfa,brillo, reflex, translucido, indiceRef, radio, alto);
 }
+
+color parceo::parseColor(tinyxml2::XMLElement* colorElemen)
+{
+	const auto fill = colorElemen->FirstChildElement("color");
+
+	double  r = fill->FloatAttribute("red");
+	double g = fill->FloatAttribute("green");
+	double  b = fill->FloatAttribute("blue");
+
+	return  color(r, g, b);
+}
+
+int parceo::parceoInt(tinyxml2::XMLElement* element, const char* name)
+{
+	return element->IntAttribute(name);
+}
+
+objeto* parceo::parseObjeto(tinyxml2::XMLElement* element)
+{
+	string objN = std::string(element->Attribute("tipo"));
+	objeto* obj = nullptr;
+	if (objN == "pared") { obj = parsePared(element); }
+	else if (objN == "esfera") { obj = parseEsfera(element); }
+	else if (objN== "cilindro") { obj = parseCilindro(element); }
+	else if (objN == "mesa") { obj = parseMesa(element); }
+	else {  }
+	return obj;
+}
+
+camara* parceo::parseCamara(tinyxml2::XMLElement* element, int ancho, int alto)
+{
+	const auto position = parseovec3("position", element);
+	const auto look_at = parseovec3("look_at", element);
+	const auto up = parseovec3("up", element);
+
+	return new camara(position, look_at, up, ancho, alto);
+	return nullptr;
+}
+

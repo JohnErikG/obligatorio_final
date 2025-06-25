@@ -1,39 +1,8 @@
 #include "camara.h"
-#include <iostream>
-#include <cmath>
 
-
-constexpr float to_radians(float degrees) {
-    return degrees * 3.14159265359f / 180.0f;
-}
-
-float normalizar_angulo(float angulo) {
-    while (angulo < 0.0f) angulo += 360.0f;
-    while (angulo >= 360.0f) angulo -= 360.0f;
-    return angulo;
-}
-
-void camara::actualizar_angulos_desde_direccion()
+vector3 camara::get_position() const
 {
-    vector3 dir_normalizada = direccion_;
-
-    pitch_ = std::asin(dir_normalizada.get_y()) * 180.0f / 3.14159265359f;
-
-    yaw_ = std::atan2(dir_normalizada.get_z(), dir_normalizada.get_x()) * 180.0f / 3.14159265359f;
-
-    if (yaw_ < 0.0f)
-        yaw_ += 360.0f;
-}
-
-
-vector3 camara::get_posicion() const
-{
-    return posicion_;
-}
-
-vector3 camara::get_direccion() const
-{
-    return direccion_;
+    return position_;
 }
 
 vector3 camara::get_up() const
@@ -41,68 +10,93 @@ vector3 camara::get_up() const
     return up_;
 }
 
-void camara::set_direccion(const vector3& direccion)
+vector3 camara::get_direction() const
 {
-    direccion_ = direccion;
+    return direction_;
 }
 
-void camara::set_posicion(const vector3& posicion)
+vector3 camara::get_U() const
 {
-    posicion_ = posicion;
+    return U_;
 }
 
-void camara::set_up(const vector3& up)
+vector3 camara::get_V() const
 {
-    up_ = up;
+    return V_;
 }
 
-void camara::mover(const vector3& desplazamiento)
+double camara::get_aspect_ratio() const
 {
-    posicion_ += desplazamiento;
+    return aspect_ratio_;
 }
 
-
-
-void camara::rotar(const float x_offset, const float y_offset, const bool primera_persona, const bool vertical, const bool atras)
+double camara::get_horizontal_size() const
 {
-    constexpr float sensitivity = 0.1f;
+    return horizontal_size_;
+}
 
+double camara::get_length() const
+{
+    return length_;
+}
 
-    float x_off = x_offset * sensitivity;
-    float y_off = y_offset * sensitivity;
+void camara::generate_ray(double u, double v, rayo& ray)
+{
 
+    vector3 pixel = camera_centre_ + (U_ * u);
+    pixel = pixel + (V_ * v);
 
-    yaw_ += x_off;
-    pitch_ += y_off;
+    
+    ray.setOrigen(position_);
+    ray.setDireccion(pixel);
+}
+vector3 camara::get_position() const
+{
+    return position_;
+}
 
-    // Restringir rotacion vertical
-    if (pitch_ > 89.0f)
-        pitch_ = 89.0f;
-    if (pitch_ < -89.0f)
-        pitch_ = -89.0f;
+vector3 camara::get_up() const
+{
+    return up_;
+}
 
-    if (primera_persona && !vertical) {
-        if (!atras) {
-            if (yaw_ > 89.0f)
-                yaw_ = 89.0f;
-            if (yaw_ < -89.0f)
-                yaw_ = -89.0f;
-        }
-        else {
-            if (yaw_ < 90.0f) yaw_ = 90.0f;
-            if (yaw_ > 270.0f) yaw_ = 270.0f;
-        }
-    }
+vector3 camara::get_direction() const
+{
+    return direction_;
+}
 
-    if (!primera_persona) {
-        yaw_ = normalizar_angulo(yaw_);
-    }
-    // Recalcular dirección
-    vector3 nueva_direccion;
-    nueva_direccion.set_x(std::cos(to_radians(yaw_)) * std::cos(to_radians(pitch_)));
-    nueva_direccion.set_y(std::sin(to_radians(pitch_)));
-    nueva_direccion.set_z(std::sin(to_radians(yaw_)) * std::cos(to_radians(pitch_)));
-    nueva_direccion.normalize();
+vector3 camara::get_U() const
+{
+    return U_;
+}
 
-    direccion_ = nueva_direccion;
+vector3 camara::get_V() const
+{
+    return V_;
+}
+
+double camara::get_aspect_ratio() const
+{
+    return aspect_ratio_;
+}
+
+double camara::get_horizontal_size() const
+{
+    return horizontal_size_;
+}
+
+double camara::get_length() const
+{
+    return length_;
+}
+
+void camara::generate_ray(double u, double v, rayo& ray)
+{
+
+    vector3 pixel = camera_centre_ + (U_ * u);
+    pixel = pixel + (V_ * v);
+
+   
+    ray.setOrigen(position_);
+    ray.setDireccion(pixel);
 }
