@@ -4,15 +4,17 @@ class pixel
 {
 	private:
 		int x, y;
-		int r, g, b;
+		float  r, g, b;
+		float alfa;
 		
 public:
-		pixel(int x, int y, int r, int g, int b) : x(x), y(y), r(r), g(g), b(b) {}
+		pixel(int x, int y, float  r, float g, float b, float alf) : x(x), y(y), r(r), g(g), b(b), alfa(alf) {}
 		int getX() const { return x; }
 		int getY() const { return y; }
-		int getR() const { return r; }
-		int getG() const { return g; }
-		int getB() const { return b; }
+		float getR() const { return r; }
+		float getG() const { return g; }
+		float getB() const { return b; }
+		float getAlfa() const { return alfa; }
 		void setX(int newX) { x = newX; }
 		void setY(int newY) { y = newY; }
 		void setR(int newR) { r = newR; }
