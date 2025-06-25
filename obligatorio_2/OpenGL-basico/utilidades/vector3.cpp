@@ -93,6 +93,13 @@ vector3 vector3::zero()
 {
     return vector3(0, 0, 0);
 }
+vector3 vector3::cross_product(const vector3& other) const
+{
+    float  result_x = this->get_y() * other.get_z() - this->get_z() * other.get_y();
+    float result_y = this->get_z() * other.get_x() - this->get_x() * other.get_z();
+    float result_z = this->get_x() * other.get_y() - this->get_y() * other.get_x();
+    return vector3(result_x, result_y, result_z);
+}
 
 void vector3::reset()
 {
