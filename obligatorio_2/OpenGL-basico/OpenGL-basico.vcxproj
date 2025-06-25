@@ -101,11 +101,9 @@
     <ClCompile Include="render\pixel.cpp" />
     <ClCompile Include="ray_tracing\rayo.cpp" />
     <ClCompile Include="render\renderr.cpp" />
-<<<<<<< HEAD
+
     <ClCompile Include="utilidades\color.cpp" />
-    <ClCompile Include="utilidades\vector3.cpp" />
-=======
->>>>>>> erik2
+
     <ClCompile Include="utilidades\vector2.cpp" />
     <ClCompile Include="utilidades\vector3.cpp" />
   </ItemGroup>
@@ -124,14 +122,10 @@
     <ClInclude Include="render\pixel.h" />
     <ClInclude Include="ray_tracing\rayo.h" />
     <ClInclude Include="render\renderr.h" />
-<<<<<<< HEAD
+
     <ClInclude Include="utilidades\color.h" />
     <ClInclude Include="utilidades\vector3.h" />
     <ClInclude Include="utilidades\vector2.h" />
-=======
-    <ClInclude Include="utilidades\vector2.h" />
-    <ClInclude Include="utilidades\vector3.h" />
->>>>>>> erik2
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
