@@ -35,7 +35,7 @@ pared* parceo::parsePared(tinyxml2::XMLElement* paredElemen)
 	const float indiceRef = paredElemen->FloatAttribute("indiceRef");
 	const float reflex = paredElemen->FloatAttribute("reflex");
 
-	return new pared(position, normal, alfa, reflex, translucido , indiceRef, ancho, alto);
+	return new pared(position, normal,color, alfa, reflex, translucido , indiceRef, ancho, alto);
 }
 
 camara* parceo::parseCamara(tinyxml2::XMLElement* camaraElemen)

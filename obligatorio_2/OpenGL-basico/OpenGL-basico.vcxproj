@@ -86,8 +86,8 @@
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="cil.cpp" />
     <ClCompile Include="objetos\cilindro.cpp" />
+    <ClCompile Include="objetos\esfera.cpp" />
     <ClCompile Include="objetos\objeto.cpp" />
-    <ClCompile Include="objetos\Esfera.cpp" />
     <ClCompile Include="objetos\pared.cpp" />
     <ClCompile Include="objetos\cili.cpp" />
     <ClCompile Include="objetos\mesa.cpp" />
@@ -106,8 +106,8 @@
   <ItemGroup>
     <ClInclude Include="cil.h" />
     <ClInclude Include="objetos\cilindro.h" />
+    <ClInclude Include="objetos\esfera.h" />
     <ClInclude Include="objetos\objeto.h" />
-    <ClInclude Include="objetos\Esfera.h" />
     <ClInclude Include="objetos\pared.h" />
     <ClInclude Include="objetos\cili.h" />
     <ClInclude Include="objetos\mesa.h" />
