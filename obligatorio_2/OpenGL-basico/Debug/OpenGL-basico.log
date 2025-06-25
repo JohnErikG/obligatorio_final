@@ -1,1 +1,20 @@
-﻿  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe
+﻿  objeto.cpp
+  mesa.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\objetos\mesa.cpp(72,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\objetos\mesa.cpp(100,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  eseena.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\luz.h(14,42): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "ecena/eseena.cpp")
+  
+  luz.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\luz.h(14,42): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "luz.cpp")
+  
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\luz.cpp(11,40): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+  parceo.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\luz.h(14,42): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  (compilando archivo de origen "esenas/parceo.cpp")
+  
+  vector3.cpp
+  Generando código...
+  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe

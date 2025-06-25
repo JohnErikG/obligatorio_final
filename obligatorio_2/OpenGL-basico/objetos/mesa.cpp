@@ -1,7 +1,7 @@
 #include "mesa.h"
 #include "mesa.h"
 
-mesa mesa::crearMesa( vector3 pos, vector3 color, float alfa, float refle, float translucido, float indiceRef, float alto , float ancho, float prof)
+mesa mesa::crearMesa( vector3 pos, vector3 color, float alfa,float bri,  float refle, float translucido, float indiceRef, float alto , float ancho, float prof)
 {
 	//pos vertice sup izquierdo de la mesa 
 	vector3 v0(pos.get_x(), pos.get_y(), pos.get_z());
@@ -24,7 +24,7 @@ mesa mesa::crearMesa( vector3 pos, vector3 color, float alfa, float refle, float
 		2, 3, 7, 7, 6, 2 // Tapa
 	};
 
-    return mesa(vertices , indices ,pos,  color, alfa , refle , translucido, indiceRef);
+    return mesa(vertices , indices ,pos,  color, alfa, bri, refle , translucido, indiceRef);
 }
 
 bool mesa::interTri(const vector3& v0, const vector3& v1, const vector3& v2, rayo& rayo, vector3& point, vector3& normal)

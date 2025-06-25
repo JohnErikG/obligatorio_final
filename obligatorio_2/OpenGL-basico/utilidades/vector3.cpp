@@ -79,7 +79,7 @@ float vector3::angle_with(const vector3& other) const
 
 float vector3::getNorm() const
 {
-    return (sqrt(x_*x_ + y_*y_ + z_*z_);
+    return (sqrt(x_*x_ + y_*y_ + z_*z_));
 }
 
 vector3 vector3::normalize() const
