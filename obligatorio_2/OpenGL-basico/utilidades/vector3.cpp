@@ -77,6 +77,11 @@ float vector3::angle_with(const vector3& other) const
     return std::acos(cosine);
 }
 
+float vector3::getNorm() const
+{
+    return (sqrt(x_*x_ + y_*y_ + z_*z_);
+}
+
 vector3 vector3::normalize() const
 {
     return vector3(x_ / magnitude_, y_ / magnitude_, z_ / magnitude_);

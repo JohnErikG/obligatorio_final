@@ -34,8 +34,8 @@ pared* parceo::parsePared(tinyxml2::XMLElement* paredElemen)
 	const float translucido = paredElemen->FloatAttribute("translucido");
 	const float indiceRef = paredElemen->FloatAttribute("indiceRef");
 	const float reflex = paredElemen->FloatAttribute("reflex");
-
-	return new pared(position, normal,color, alfa, reflex, translucido , indiceRef, ancho, alto);
+	const float brillo = paredElemen->FloatAttribute("brillo");
+	return new pared(position, normal,color, alfa,brillo, reflex, translucido , indiceRef, ancho, alto);
 }
 
 camara* parceo::parseCamara(tinyxml2::XMLElement* camaraElemen)
@@ -52,7 +52,8 @@ esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
 	const float translucido = esperaElemen->FloatAttribute("translucido");
 	const float indiceRef = esperaElemen->FloatAttribute("indiceRef");
 	const float alfa = esperaElemen->FloatAttribute("alfa");
-	return new esfera(position, radio, color , alfa , reflex, translucido , indiceRef);
+	const float brillo = esperaElemen->FloatAttribute("brillo");
+	return new esfera(position, radio, color , alfa ,brillo,  reflex, translucido , indiceRef);
 }
 
 mesa* parceo::parseMesa(tinyxml2::XMLElement* mesaElemen)
@@ -66,8 +67,8 @@ mesa* parceo::parseMesa(tinyxml2::XMLElement* mesaElemen)
 	const float reflex = mesaElemen->FloatAttribute("reflex");
 	const float translucido = mesaElemen->FloatAttribute("translucido");
 	const float indiceRef = mesaElemen->FloatAttribute("indiceRef");
-	
-	return new mesa(mesa::crearMesa(pos, color , alfa,reflex, translucido, indiceRef,alto, ancho, profundidad));
+	const float brillo = mesaElemen->FloatAttribute("brillo");
+	return new mesa(mesa::crearMesa(pos, color , alfa,brillo , reflex, translucido, indiceRef,alto, ancho, profundidad));
 }
 
 cilindro* parceo::parseCilindro(tinyxml2::XMLElement* cilindroElemen)
@@ -80,6 +81,6 @@ cilindro* parceo::parseCilindro(tinyxml2::XMLElement* cilindroElemen)
 	const float translucido = cilindroElemen->FloatAttribute("translucido");
 	const float indiceRef = cilindroElemen->FloatAttribute("indiceRef");
 	const float alfa = cilindroElemen->FloatAttribute("alfa");
-
-	return new cilindro(pos, color , alfa, reflex, translucido, indiceRef, radio, alto);
+	const float brillo = cilindroElemen->FloatAttribute("brillo");
+	return new cilindro(pos, color , alfa,brillo, reflex, translucido, indiceRef, radio, alto);
 }

@@ -40,7 +40,7 @@ public:
 
     float dot_product(const vector3& other) const;
     float angle_with(const vector3& other) const; // returns in radians
-
+	float getNorm()const; // returns the norm of the vector
     vector3 normalize() const;
     vector3 symmetrical(const vector3& other) const;
     vector3 cross_product(const vector3& other) const;

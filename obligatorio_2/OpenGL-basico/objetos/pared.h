@@ -9,7 +9,7 @@ class pared : public objeto {
 	vector3 punto1, punto2;
 	float altura, ancho;
 public:
-	pared(vector3 pos, vector3 normal_, vector3 color, float alfa, float refle, float transluc, float indiRef, float h, float w) : objeto(pos, color, alfa, refle, transluc, indiRef) {
+	pared(vector3 pos, vector3 normal_, vector3 color, float alfa,float bri, float refle, float transluc, float indiRef, float h, float w) : objeto(pos, color, alfa,bri, refle, transluc, indiRef) {
 		altura = h;
 		ancho = w;
 		normal = normal_.normalize();
