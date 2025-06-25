@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  main.cpp
 C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(18,49): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
   (compilando archivo de origen "../main.cpp")
@@ -290,3 +291,7 @@ C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\
   color.cpp
   vector3.cpp
   vector2.cpp
+=======
+﻿Esfera.obj : error LNK2001: símbolo externo "public: virtual bool __thiscall objeto::intersecta(class vector3 const &,class vector3 const &,float &)" (?intersecta@objeto@@UAE_NABVvector3@@0AAM@Z) sin resolver
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Release\OpenGL-basico.exe : fatal error LNK1120: 1 externos sin resolver
+>>>>>>> erik2

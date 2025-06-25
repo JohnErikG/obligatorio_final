@@ -1,6 +1,7 @@
-#pragma once
+ #pragma once
 #include "utilidades/vector3.h"
-
+#include "objetos/objeto.h"
+#include <vector>
 class luz
 {
 private:
@@ -15,6 +16,6 @@ public:
 	vector3 getPosicion() const { return posicion; }
 	vector3 getColor() const { return color; }
 	float getIntensidad() const { return intensidad; }
-	~luz() = default;
+	bool iluminacion(vector3& interseccion, vector3& normal, std::vector<objeto*> objetos, objeto* actual, float& inte);	~luz() = default;
 };
 

@@ -47,6 +47,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>..\Freeimage;..\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
     <LibraryPath>..\Freeimage;..\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(VC_ExecutablePath_x86);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(SystemRoot)\SysWow64;$(FxCopDir);$(PATH);</ExecutablePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -54,6 +55,8 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -69,6 +72,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -76,42 +82,56 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>FreeImage.lib;opengl32.lib;glu32.lib;SDL2.lib;SDL2main.lib;legacy_stdio_definitions.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Assimp\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\main.cpp" />
+    <ClCompile Include="objetos\cilindro.cpp" />
+    <ClCompile Include="objetos\esfera.cpp" />
+    <ClCompile Include="objetos\objeto.cpp" />
+    <ClCompile Include="objetos\pared.cpp" />
+    <ClCompile Include="objetos\mesa.cpp" />
     <ClCompile Include="ecena\camara.cpp" />
     <ClCompile Include="ecena\escena.cpp" />
     <ClCompile Include="esenas\tinyxml2.cpp" />
-    <ClCompile Include="objetos\Esfera.cpp" />
     <ClCompile Include="luz.cpp" />
     <ClCompile Include="esenas\parceo.cpp" />
-    <ClCompile Include="objetos\objeto.cpp" />
-    <ClCompile Include="objetos\pared.cpp" />
     <ClCompile Include="render\imagen.cpp" />
     <ClCompile Include="render\pixel.cpp" />
     <ClCompile Include="ray_tracing\rayo.cpp" />
     <ClCompile Include="render\renderr.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="utilidades\color.cpp" />
     <ClCompile Include="utilidades\vector3.cpp" />
+=======
+>>>>>>> erik2
     <ClCompile Include="utilidades\vector2.cpp" />
+    <ClCompile Include="utilidades\vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="objetos\cilindro.h" />
+    <ClInclude Include="objetos\esfera.h" />
+    <ClInclude Include="objetos\objeto.h" />
+    <ClInclude Include="objetos\pared.h" />
+    <ClInclude Include="objetos\mesa.h" />
     <ClInclude Include="ecena\camara.h" />
     <ClInclude Include="ecena\escena.h" />
     <ClInclude Include="esenas\tinyxml2.h" />
-    <ClInclude Include="objetos\Esfera.h" />
     <ClInclude Include="luz.h" />
     <ClInclude Include="esenas\parceo.h" />
-    <ClInclude Include="objetos\pared.h" />
-    <ClInclude Include="objetos\objeto.h" />
     <ClInclude Include="render\imagen.h" />
     <ClInclude Include="render\pixel.h" />
     <ClInclude Include="ray_tracing\rayo.h" />
     <ClInclude Include="render\renderr.h" />
+<<<<<<< HEAD
     <ClInclude Include="utilidades\color.h" />
     <ClInclude Include="utilidades\vector3.h" />
     <ClInclude Include="utilidades\vector2.h" />
+=======
+    <ClInclude Include="utilidades\vector2.h" />
+    <ClInclude Include="utilidades\vector3.h" />
+>>>>>>> erik2
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

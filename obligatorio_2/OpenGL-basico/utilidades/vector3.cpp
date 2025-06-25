@@ -77,6 +77,11 @@ float vector3::angle_with(const vector3& other) const
     return std::acos(cosine);
 }
 
+float vector3::getNorm() const
+{
+    return (sqrt(x_*x_ + y_*y_ + z_*z_));
+}
+
 vector3 vector3::normalize() const
 {
     return vector3(x_ / magnitude_, y_ / magnitude_, z_ / magnitude_);
@@ -92,6 +97,13 @@ vector3 vector3::symmetrical(const vector3& other) const
 vector3 vector3::zero()
 {
     return vector3(0, 0, 0);
+}
+vector3 vector3::cross_product(const vector3& other) const
+{
+    float  result_x = this->get_y() * other.get_z() - this->get_z() * other.get_y();
+    float result_y = this->get_z() * other.get_x() - this->get_x() * other.get_z();
+    float result_z = this->get_x() * other.get_y() - this->get_y() * other.get_x();
+    return vector3(result_x, result_y, result_z);
 }
 
 void vector3::reset()
