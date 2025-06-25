@@ -63,7 +63,10 @@
     <ClCompile Include="objetos\mesa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objetos\cilindro.cpp">
+    <ClCompile Include="objetos\cili.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,7 +116,10 @@
     <ClInclude Include="objetos\mesa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objetos\cilindro.h">
+    <ClInclude Include="objetos\cili.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

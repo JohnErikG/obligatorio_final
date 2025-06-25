@@ -43,7 +43,7 @@ camara* parceo::parseCamara(tinyxml2::XMLElement* camaraElemen)
 	return nullptr;
 }
 
-Esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
+esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
 {
 	const vector3 position = parceo::parseovec3("position", esperaElemen);
 	const vector3 color = parceo::parseovec3("color", esperaElemen);
@@ -52,7 +52,7 @@ Esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
 	const float translucido = esperaElemen->FloatAttribute("translucido");
 	const float indiceRef = esperaElemen->FloatAttribute("indiceRef");
 	const float alfa = esperaElemen->FloatAttribute("alfa");
-	return new Esfera(position, radio, color , alfa , reflex, translucido , indiceRef);
+	return new esfera(position, radio, color , alfa , reflex, translucido , indiceRef);
 }
 
 mesa* parceo::parseMesa(tinyxml2::XMLElement* mesaElemen)

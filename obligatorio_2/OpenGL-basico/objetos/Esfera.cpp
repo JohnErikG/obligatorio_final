@@ -1,8 +1,8 @@
-#include "Esfera.h"
+#include "esfera.h"
 #include <iostream>
 
 
-bool Esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
+bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 {
 	vector3 r = ra.getOrigen() - getpos();
 	vector3 RN = ra.getDireccion().normalize();
@@ -33,6 +33,6 @@ bool Esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 }
 
 
-Esfera::~Esfera()
+esfera::~esfera()
 {
 }
