@@ -22,7 +22,7 @@ public:
 		punto1 = (normal*arbitrario).normalize();
 		punto2 = (punto1 * normal).normalize();
 	}
+	bool interseccion(vector3& origen, vector3& punto, vector3 normal);
 	
-	
-	~pared() override = default;
+	~pared() override ;
 };

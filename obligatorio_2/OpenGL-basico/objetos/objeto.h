@@ -1,6 +1,8 @@
 #pragma once
 #include "../utilidades/vector3.h"
-
+#include "../ray_tracing/rayo.h"
+#include <cstdio>
+#include <iostream>
 class objeto
 {
 protected:
@@ -12,8 +14,6 @@ public:
 		: pos(pos_), color(color_), alfa(alfa_), reflectividad(reflectividad_),
 	transparaencia(transparaencia_), indiceRefraccion(indiceRefraccion_) {}
 
-
-	virtual bool intersecta(const vector3& origen, const vector3& direccion, float& t);
 	vector3 getcolor() const { return color; }
 	vector3 getpos() const { return pos; }
 	float getalfa() const { return alfa; }
@@ -21,8 +21,7 @@ public:
 
 	float gettransparaencia() const { return transparaencia; }
 	float getindiceRefraccion() const { return indiceRefraccion; }
-	
-
+	virtual bool intereseccion(rayo& rayo, vector3& punto, vector3& normal);
 
 	virtual ~objeto() {}
 };

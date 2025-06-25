@@ -54,3 +54,32 @@ Esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
 	const float alfa = esperaElemen->FloatAttribute("alfa");
 	return new Esfera(position, radio, color , alfa , reflex, translucido , indiceRef);
 }
+
+mesa* parceo::parseMesa(tinyxml2::XMLElement* mesaElemen)
+{
+	const vector3 pos = parceo::parseovec3("position", mesaElemen);
+	const vector3 color = parceo::parseovec3("color", mesaElemen);
+	const float alfa = mesaElemen->FloatAttribute("alfa");
+	const float alto = mesaElemen->FloatAttribute("alto");
+	const float ancho = mesaElemen->FloatAttribute("ancho");
+	const float profundidad = mesaElemen->FloatAttribute("profundidad");
+	const float reflex = mesaElemen->FloatAttribute("reflex");
+	const float translucido = mesaElemen->FloatAttribute("translucido");
+	const float indiceRef = mesaElemen->FloatAttribute("indiceRef");
+	
+	return new mesa(mesa::crearMesa(pos, color , alfa,reflex, translucido, indiceRef,alto, ancho, profundidad));
+}
+
+cilindro* parceo::parseCilindro(tinyxml2::XMLElement* cilindroElemen)
+{
+	const vector3 pos = parceo::parseovec3("position", cilindroElemen);
+	const vector3 color = parceo::parseovec3("color", cilindroElemen);
+	const float radio = cilindroElemen->FloatAttribute("radio");
+	const float alto = cilindroElemen->FloatAttribute("alto");
+	const float reflex = cilindroElemen->FloatAttribute("reflex");
+	const float translucido = cilindroElemen->FloatAttribute("translucido");
+	const float indiceRef = cilindroElemen->FloatAttribute("indiceRef");
+	const float alfa = cilindroElemen->FloatAttribute("alfa");
+
+	return new cilindro(pos, color , alfa, reflex, translucido, indiceRef, radio, alto);
+}
