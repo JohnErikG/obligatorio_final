@@ -37,8 +37,7 @@ public:
     vector3 get_U() const;
     vector3 get_V() const;
 
-    // u, v in [-1, 1], voy actualizando el rayo
+
     void generate_ray(double u, double v, rayo& ra);
-    void mover(const vector3& desplazamiento);
-    void rotar(float x_offset, float y_offset, bool primera_persona, bool vertical, bool atras);
+
 };
