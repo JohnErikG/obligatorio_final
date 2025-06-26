@@ -7,3 +7,8 @@ imagen::imagen(int ancho, int alto, std::vector<pixel>& vector, typo tipo)
 	this->pixeles = vector;
 	this->tipo = tipo;
 }
+
+void imagen::agregarP(pixel pix)
+{
+	this->pixeles.push_back(pix);
+}

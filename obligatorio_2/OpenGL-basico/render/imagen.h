@@ -17,6 +17,7 @@ public :
 	explicit imagen(int ancho, int alto,std::vector<pixel>& vector, typo tipo = normal);
 	int getAncho() const { return ancho; }
 	int getAlto() const { return alto; }
+	void agregarP(pixel pix);
 	std::vector<pixel> getPixeles() const { return pixeles; }
 	pixel getpixel(int x, int y) const
 	{
@@ -39,7 +40,7 @@ public :
 	static imagen vacia(int ancho, int alto, typo tip)
 	{
 		std::vector<pixel> vacio;
-		return imagen(ancho, alto, vacio);
+		return imagen(ancho, alto, vacio, tip);
 	}
 };
 

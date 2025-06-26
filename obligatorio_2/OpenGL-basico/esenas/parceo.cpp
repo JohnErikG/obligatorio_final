@@ -109,7 +109,7 @@ objeto* parceo::parseObjeto(tinyxml2::XMLElement* element)
 	else if (objN == "esfera") { obj = parseEsfera(element); }
 	else if (objN== "cilindro") { obj = parseCilindro(element); }
 	else if (objN == "mesa") { obj = parseMesa(element); }
-	else {  }
+	
 	return obj;
 }
 

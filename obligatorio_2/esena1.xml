@@ -1,16 +1,26 @@
+
 <?xml version="1.0" encoding="utf-8"?>
 <document>
-	<scene name ="esena1" width ="1200" height="760">
-		<fondo>
-			<color r="0.0" g="0.0" b="0.0"/>
-		</fondo>
-		<ambiente>
-			<color r="0.2" g="0.2" b="0.2"/>
-		</ambiente>
-		<camara>
-			<posicion x="0.0" y="0.0" z="5.0"/>
-			<look_at x="0.0" y="0.0" z="-1.0"/>
-			<up x="0.0" y="1.0" z="0.0"/>	
-		</camara>
-	</scene>
+
+<scene name="Our First Scene" width="800" height="600">
+        <background>
+            <color red="0" blue="0" green="0"/>
+        </background>
+        <ambient>
+            <color red="15" blue="15" green="15"/>
+        </ambient>
+        <camera>
+            <position x="0" y="0" z="0"/>
+            <look_at x="0" y="0" z="-1"/>
+            <up x="0" y="1" z="0"/>
+        </camera>
+        <shape id="floor_plane" tipo="pared" alfa = "1" reflex="0" brillo="0" alto="35" ancho="35" translucido="0"
+               indiceRef="0">
+            <color x="225" y="225" z="225"/>
+            
+                <normal x="0" y="1" z="0"/>
+                <position x="0" y="-10" z="-35"/>
+
+        </shape>
+</scene>
 </document>

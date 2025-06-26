@@ -74,7 +74,7 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
         const auto element = node->ToElement();
 
         const auto element_type = std::string(element->Name());
-
+        
         if (element_type == "shape") { objects_.push_back(parceo::parseObjeto(element)); }
         else if (element_type == "luz") { lights_.push_back(parceo::parsL(element)); }
         else if (element_type == "camera") { camara_ = parceo::parseCamara(element, ancho_, alto_); }
@@ -170,9 +170,9 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
                     255 * final_reflectividad));
                 pixel px_refractividad = pixel(x, y, color(255 * final_refractividad, 255 * final_refractividad,
                     255 * final_refractividad));
-                final_.getPixeles().push_back(px);
-                aux_relfexion_.getPixeles().push_back(px_reflectividad);
-                aux_refraccion_.getPixeles().push_back(px_refractividad);
+                final_.agregarP(px);
+                aux_relfexion_.agregarP(px_reflectividad);
+                aux_refraccion_.agregarP(px_refractividad);
             }
         }
     }

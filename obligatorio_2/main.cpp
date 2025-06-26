@@ -14,15 +14,17 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	//INICIALIZACION
+
+    std::cout << "aaaaaaaaaaaaaaa\n";
 	escena esc("../esena1.xml");
 
-
-	if (SDL_Init(SDL_INIT_VIDEO)<0) {
+	std::cout << "Escena initialized successfully.\n";
+	if (SDL_Init(SDL_INIT_VIDEO)!=0) {
 		cerr << "No se pudo iniciar SDL: " << SDL_GetError() << endl;
 		exit(1);
 	}
 	FreeImage_Initialise();
-
+    std::cout << "FreeImage Initialized successfully.\n";
 	SDL_Window* win = SDL_CreateWindow("ICG-UdelaR",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
