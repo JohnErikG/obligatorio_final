@@ -102,7 +102,7 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
     {
         /* Creamos el rayo que sale de la camara, el cual usaremos para el trazado de rayos */
         rayo ra = rayo(camara_->get_position(), vector3(0, 0, 0 ));
-
+        std::cout << camara_->get_position().get_x() << "\n";
         double x_factor = 2.0 / (double)ancho_;
         double y_factor = 2.0 / (double)alto_;
         int n = 2; // Número de celdas por lado, para un total de n*n rayos por píxel

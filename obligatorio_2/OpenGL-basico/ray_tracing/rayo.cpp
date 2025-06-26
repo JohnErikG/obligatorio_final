@@ -28,7 +28,7 @@ void rayo::setDireccion(vector3 dir)
 rayo rayo::reflejar(const vector3& interseccion, const vector3& normal) const
 {
     const vector3 dir_vista = get_rayo_vector();
-    const vector3 normal_int = normal.normalize();
+    const vector3 normal_int = normal;
     vector3 dir_reflejada = dir_vista -  normal_int * (2 * dir_vista.dot_product(normal_int));
 
     return rayo(interseccion + dir_reflejada * 0.00001, dir_reflejada);

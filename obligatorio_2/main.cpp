@@ -28,17 +28,12 @@ int main(int argc, char *argv[]) {
 	SDL_Window* win = SDL_CreateWindow("ICG-UdelaR",
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
-		640, 480, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
-	SDL_GLContext context = SDL_GL_CreateContext(win);
+		esc.get_ancho(), esc.get_alto(), SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+	
 
 
 
-	float color = 0;
-	glClearColor(color, color, color, 1);
 
-	gluPerspective(45, 640 / 480.f, 0.1, 100);
-	glEnable(GL_DEPTH_TEST);
-	glMatrixMode(GL_MODELVIEW);
 
 	bool fin = false;
 
@@ -47,11 +42,19 @@ int main(int argc, char *argv[]) {
 
 
 	SDL_Renderer* render = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+    if (!render)
+    {
+        std::cerr << "No se pudo crear el renderer: " << SDL_GetError() << '\n';
+        SDL_DestroyWindow(win);
+        FreeImage_DeInitialise();
+        SDL_Quit();
+        return 3;
+    }
 	SDL_SetRenderDrawColor(render, 0, 0, 0, 255); 
 	SDL_RenderClear(render);
 	SDL_RenderPresent(render); 
 
-	
+    std::cout << "SDL Renderer created successfully.\n";
     while (!fin)
     {
         while (SDL_PollEvent(&evento))
@@ -67,6 +70,7 @@ int main(int argc, char *argv[]) {
             // Renderiza la escena y la imagen intermedia
             esc.Render(render, 1);
             renderr::algoritmo(esc.get_imagen_final(), esc.get_iter(), render);
+			std::cout << "Rendering frame: " << esc.get_iter() << '\n';
         }
         else
         {

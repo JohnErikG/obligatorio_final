@@ -16,7 +16,7 @@ public:
 		a = normal.get_x();
 		b = normal.get_y();
 		c = normal.get_z();
-		d = -(a * punto1.get_x() + b * punto1.get_y() + c * punto1.get_z());
+		d = -(a * pos.get_x() + b * pos.get_y() + c * pos.get_z());
 		vector3 arbitrario = vector3(0, 0, 1);
 		if (a == 0 && b == 0 && (c == 1 || c == -1)) {
 			arbitrario = vector3(1, 0, 0);
