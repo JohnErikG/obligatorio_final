@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
             fin = true;
         }
         SDL_RenderPresent(render);
-        //SDL_Delay(5000);
+       
     }
 
     SDL_DestroyRenderer(render);

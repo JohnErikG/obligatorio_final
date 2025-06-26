@@ -49,7 +49,7 @@ public:
         luz* luz);
     color calcular_especular(rayo& rayo, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano, luz*
         luz);
-    color calcular_reflexion( rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
+    color calcular_reflexion(const rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
         objeto* objeto_cercano, int nivel);
     color calcular_translucidez(rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion,
         objeto* objeto_cercano, int nivel);

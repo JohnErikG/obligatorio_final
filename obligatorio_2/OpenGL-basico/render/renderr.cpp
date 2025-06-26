@@ -80,7 +80,18 @@ void renderr::guardado(imagen& img)
 
 void renderr::algoritmo(imagen& img, int maxX, SDL_Renderer* ren)
 {
+    if (!ren)
+    {
+        std::cerr << "Renderer is invalid." << std::endl;
+        return;
+    }
 
+
+    if (img.getPixeles().empty() || img.getAncho() <= 0 || img.getAlto() <= 0)
+    {
+        std::cerr << "Invalid image data." << std::endl;
+        return;
+    }
     // Crear un buffer para los datos de los píxeles en formato RGBA
     std::vector<uint32_t> pixel_data(img.getAncho() * img.getAlto());
     for (int x = 0; x < maxX; x++)
@@ -109,15 +120,26 @@ void renderr::algoritmo(imagen& img, int maxX, SDL_Renderer* ren)
             0x000000FF  // Alpha mask
         );
 
-
+        if (!surface)
+        {
+            std::cerr << "SDL_CreateRGBSurfaceFrom Error: " << SDL_GetError() << std::endl;
+            return;
+        }
         SDL_Texture* texture = SDL_CreateTextureFromSurface(ren, surface);
         SDL_FreeSurface(surface);
 
+        if (!texture)
+        {
+            std::cerr << "Failed to create texture from image." << std::endl;
+            return;
+        }
 
         SDL_RenderClear(ren);
+        if (SDL_RenderCopy(ren, texture, NULL, NULL) != 0)
+        {
 
-        SDL_RenderCopy(ren, texture, NULL, NULL) ;
-
+            std::cerr << "SDL_RenderCopy Error: " << SDL_GetError() << std::endl;
+        }
         SDL_RenderPresent(ren);
 
         SDL_DestroyTexture(texture);

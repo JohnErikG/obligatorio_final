@@ -93,6 +93,10 @@ vector3 vector3::symmetrical(const vector3& other) const
     const auto aux = normalized_other * (2 * normalized_other.dot_product(*this));
     return aux - *this;
 }
+bool vector3::operator==(const vector3& zero) const
+{
+    return x_ == zero.x_ && y_ == zero.y_ && z_ == zero.z_;
+}
 
 vector3 vector3::zero()
 {

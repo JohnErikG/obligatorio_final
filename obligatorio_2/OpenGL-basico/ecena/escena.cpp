@@ -16,7 +16,7 @@ bool escena::cast_rayo(rayo& rayo_casteado, const objeto* objeto_actual, objeto*
 
             if (valid_int)
             {
-                double dist = (intersection_point - rayo_casteado.getOrigen()).getNorm();
+                float dist = (intersection_point - rayo_casteado.getOrigen()).getNorm();
 
                 if (dist < min_dist)
                 {
@@ -102,11 +102,11 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
     {
         /* Creamos el rayo que sale de la camara, el cual usaremos para el trazado de rayos */
         rayo ra = rayo(camara_->get_position(), vector3(0, 0, 0 ));
-        std::cout << camara_->get_position().get_x() << "\n";
-        double x_factor = 2.0 / (double)ancho_;
-        double y_factor = 2.0 / (double)alto_;
+        std::cout << camara_->get_direction().get_x() << "\n";
+        float x_factor = 2.0 / (float)ancho_;
+        float y_factor = 2.0 / (float)alto_;
         int n = 2; // Número de celdas por lado, para un total de n*n rayos por píxel
-        double cell_size = 1.0 / (double)n;
+        float cell_size = 1.0 / (float)n;
 
         /* Calculamos todos los píxeles */
 
@@ -228,22 +228,22 @@ color escena::get_color_fondo()
     return color_fondo_;
 }
 
-color escena::calcular_color(rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
+color escena::calcular_color(rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
 {
     if (nivel == 0) { return { 0, 0, 0 }; }
 
     const color diffuse_specular_color = ambiente_ + calcular_difuso_especular(
-        rayo, punto_interseccion, normal_interseccion,
+        ra, punto_interseccion, normal_interseccion,
         objeto_cercano);
     color reflection_color = { 0, 0, 0 };
     color translucent_color = { 0, 0, 0 };
     if (objeto_cercano->getreflectividad() > 0.0)
     {
-        reflection_color = calcular_reflexion(rayo, punto_interseccion, normal_interseccion, objeto_cercano, nivel - 1);
+        reflection_color = calcular_reflexion(ra, punto_interseccion, normal_interseccion, objeto_cercano, nivel - 1);
     }
     if (objeto_cercano->gettransparaencia() > 0.0)
     {
-        translucent_color = calcular_translucidez(rayo, punto_interseccion, normal_interseccion, objeto_cercano,
+        translucent_color = calcular_translucidez(ra, punto_interseccion, normal_interseccion, objeto_cercano,
             nivel - 1);
     }
 
@@ -287,7 +287,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
     rayo shadow_ray(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
 
     const double prod = normal_interseccion.dot_product(light_direction);
-    std::cout << prod << "\n\n";
+    
     if (prod < 0.0) // Solo considerar si la luz incide en la superficie
     {
         return calc_color;
@@ -362,7 +362,7 @@ color escena::calcular_especular(rayo& rayo, const vector3& punto_interseccion, 
     return specular_color;
 }
 
-color escena::calcular_reflexion( rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
+color escena::calcular_reflexion( const rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
 {
     if (nivel == 0 || objeto_cercano->getreflectividad() <= 0.0) { return { 0, 0, 0 }; }
 

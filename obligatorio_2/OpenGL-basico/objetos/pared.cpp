@@ -12,16 +12,16 @@ bool pared::intereseccion(rayo& r, vector3& punto, vector3& nor)  {
 	else if (t > 0.0) {
 		vector3 p = r.getOrigen() + rN * t; // punto de intersección
 		vector3 paux = p - getpos(); // vector desde el centro de la pared al punto de intersección
-		if ((nor.get_x() == 1 || nor.get_x() == -1) && nor.get_y() == 0 && nor.get_z() == 0) { // pared vertical
+		if (nor == vector3(1, 0, 0) || nor == vector3(-1, 0, 0)) { // pared vertical
 			u = (paux.get_y() * punto1.get_z() - paux.get_z() * punto1.get_y()) / (punto2.get_y() * punto1.get_z() - punto2.get_z() * punto1.get_y());
 			v = (paux.get_z() * punto2.get_y() - paux.get_y() * punto2.get_z()) / (punto2.get_y() * punto1.get_z() - punto2.get_z() * punto1.get_y());
 		}
-		else if (nor.get_x() == 0 && (nor.get_y() == -1 || nor.get_y() == 1) && nor.get_z() == 0)
+		else if (nor == vector3(0, 1, 0) || nor == vector3(0, -1, 0))
 		{
 			u = (paux.get_x() * punto1.get_z() - paux.get_z() * punto1.get_x()) / (punto2.get_x() * punto1.get_z() - punto2.get_z() * punto1.get_x());
 			v = (paux.get_z() * punto2.get_x() - paux.get_x() * punto2.get_z()) / (punto2.get_x() * punto1.get_z() - punto2.get_z() * punto1.get_x());
 		}
-		else if (nor.get_x() == 0 && nor.get_y() == 0 && (nor.get_z() == -1 || nor.get_z() == 1))
+		else if (nor == vector3(0, 0, 1) || nor == vector3(0, 0, -1))
 		{
 			u = (paux.get_x() * punto1.get_y() - paux.get_y() * punto1.get_x()) / (punto2.get_x() * punto1.get_y() - punto2.get_y() * punto1.get_x());
 			v = (paux.get_y() * punto2.get_x() - paux.get_x() * punto2.get_y()) / (punto2.get_x() * punto1.get_y() - punto2.get_y() * punto1.get_x());
@@ -39,7 +39,7 @@ bool pared::intereseccion(rayo& r, vector3& punto, vector3& nor)  {
 			return true;
 		}
 	}
-	return false;
+	return true;
 }
 
 pared::~pared()

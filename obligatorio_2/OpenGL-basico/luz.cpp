@@ -4,7 +4,7 @@
 bool luz::iluminacion(vector3& interseccion, vector3& normal, std::vector<objeto*> objetos, objeto* actual, float& inte)
 {
 	inte = 0.0f;
-	vector3 ra = (posicion - interseccion).normalize();
+	vector3 ra = (this->posicion - interseccion).normalize();
 	float p = normal.dot_product(ra);
 	if (p >= 0.0f) {
 		inte = getIntensidad() * p;
@@ -12,9 +12,9 @@ bool luz::iluminacion(vector3& interseccion, vector3& normal, std::vector<objeto
 		for (objeto* obj : objetos) {
 			vector3 inter = vector3(0, 0, 0);
 			vector3 barido = vector3(0, 0, 0);
-			if (obj != actual && obj->intereseccion(sombra,inter, barido)) {
+			if (obj->intereseccion(sombra,inter, barido)) {
 				float inter_dist = (inter - interseccion).getNorm();
-				float luz_dist = (posicion - interseccion).getNorm();
+				float luz_dist = (this->posicion - interseccion).getNorm();
 				if (inter_dist > luz_dist) {
 					continue; // Hay un objeto entre la luz y el punto de intersección
 				}
