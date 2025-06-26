@@ -18,7 +18,7 @@
                indiceRef="0">
             <color x="225" y="225" z="225"/>
             
-                <normal x="0" y="1" z="0"/>
+                <normal x="0" y="0" z="1"/>
                 <position x="0" y="-10" z="-35"/>
 
         </shape>
@@ -46,9 +46,9 @@
                 <position x="0" y="0" z="35"/>
            
         </shape>
-		<shape id="sphere_0" tipo="esfera" alfa = "1" reflex="0" brillo="1" radio="20" translucido="0"
+		<shape id="sphere_0" tipo="esfera" alfa = "1" reflex="0" brillo="1" radio="1" translucido="0"
                indiceRef="1">
-            <color x="225" y="0" z="0"/>
+            <color x="0" y="240" z="0"/>
             
                 <position x="0" y="0" z="-30"/>
             
@@ -61,5 +61,13 @@
             <position x="0" y="9" z="3"/>
             <color x="255" y="0" z="0"/>
         </luz>
+		<shape id="mesa1" tipo="mesa" alfa = "1" reflex="0" brillo="1" width="16" height="6" depth="5"
+               translucido="0"
+               indiceRef="0">
+            <color x="255" y="255" z="255"/>
+            
+                <position x="-9" y="-10" z="-26"/>
+            
+        </shape>
 </scene>
 </document>

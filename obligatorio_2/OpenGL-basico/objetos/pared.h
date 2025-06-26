@@ -10,15 +10,15 @@ class pared : public objeto {
 	float altura, ancho;
 public:
 	pared(vector3 pos, vector3 normal_, vector3 color, float alfa,float bri, float refle, float transluc, float indiRef, float h, float w) : objeto(pos, color, alfa,bri, refle, transluc, indiRef) {
-		altura = h;
-		ancho = w;
+		altura = 100;
+		ancho = 100;
 		normal = normal_.normalize();
 		a = normal.get_x();
 		b = normal.get_y();
 		c = normal.get_z();
 		d = -(a * pos.get_x() + b * pos.get_y() + c * pos.get_z());
 		vector3 arbitrario = vector3(0, 0, 1);
-		if (a == 0 && b == 0 && (c == 1 || c == -1)) {
+		if (normal == vector3(0, 0, 1) || normal == vector3(0, 0, -1)) {
 			arbitrario = vector3(1, 0, 0);
 		}
 		punto1 = (normal * arbitrario).normalize();
