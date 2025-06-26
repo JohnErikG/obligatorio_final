@@ -15,7 +15,7 @@ public:
 		: posicion(pos), colo(col), intensidad(inten) {
 	}
 	vector3 getPosicion() const { return posicion; }
-	color getColor() const { color(colo.get_x(), colo.get_y(), colo.get_z(), intensidad); }
+	color getColor() const { return color(colo.get_x(), colo.get_y(), colo.get_z(), intensidad); }
 	float getIntensidad() const { return intensidad; }
 	bool iluminacion(vector3& interseccion, vector3& normal, std::vector<objeto*> objetos, objeto* actual, float& inte);	~luz() = default;
 };

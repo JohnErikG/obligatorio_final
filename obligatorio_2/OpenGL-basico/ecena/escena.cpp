@@ -1,6 +1,7 @@
 #include "escena.h"
 #include <iostream>
 #include<String>
+int escena::max_depth_ = 1000;
 bool escena::cast_rayo(rayo& rayo_casteado, const objeto* objeto_actual, objeto*& objeto_cercano, vector3& punto_interseccion, vector3& normal_interseccion) const
 {
     double min_dist = 1e6;

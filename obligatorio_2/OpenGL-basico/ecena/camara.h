@@ -27,14 +27,7 @@ public:
         V_ = V_ * (horizontal_size_ / aspect_ratio_);
         camera_centre_ = position_ + (direction_ * length_);
     }
-    vector3 get_posicion() const;
-    vector3 get_direccion() const;
-    vector3 get_up() const;
 
-    void set_direccion(const vector3& direccion);
-    void set_posicion(const vector3& posicion);
-    void set_up(const vector3& up);
-    void actualizar_angulos_desde_direccion();
     double get_aspect_ratio() const;
     double get_horizontal_size() const;
     double get_length() const;

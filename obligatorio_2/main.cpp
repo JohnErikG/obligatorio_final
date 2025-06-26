@@ -8,11 +8,15 @@
 #include <vector>
 #include <../OpenGL-basico/render/renderr.h>
 #include <../OpenGL-basico/render/imagen.h>
+#include <../OpenGL-basico/ecena/escena.h>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
 	//INICIALIZACION
+	escena esc("../esena1.xml");
+
+
 	if (SDL_Init(SDL_INIT_VIDEO)<0) {
 		cerr << "No se pudo iniciar SDL: " << SDL_GetError() << endl;
 		exit(1);
@@ -25,7 +29,7 @@ int main(int argc, char *argv[]) {
 		640, 480, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 	SDL_GLContext context = SDL_GL_CreateContext(win);
 
-	glMatrixMode(GL_PROJECTION);
+
 
 	float color = 0;
 	glClearColor(color, color, color, 1);
@@ -39,48 +43,47 @@ int main(int argc, char *argv[]) {
 	SDL_Event evento;
 
 
-	imagen* img = new imagen();
-	renderr::guardado(img);
-	
-	
-	
-	//LOOP PRINCIPAL
-	do{
 
-		//MANEJO DE EVENTOS
-		while (SDL_PollEvent(&evento)){
-			switch (evento.type) {
-			case SDL_MOUSEBUTTONDOWN:
-				break;
-			case SDL_MOUSEBUTTONUP:
-				break;
-			case SDL_QUIT:
-				fin = true;
-				break;
-			case SDL_KEYUP:
-				switch (evento.key.keysym.sym) {
-				case SDLK_ESCAPE:
-					fin = true;
-					break;
-				case SDLK_RIGHT:
-					break;
-				default :
-					break;
-				}
-			default:
-				break;
-			}
-		}
-		//FIN MANEJO DE EVENTOS
+	SDL_Renderer* render = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor(render, 0, 0, 0, 255); 
+	SDL_RenderClear(render);
+	SDL_RenderPresent(render); 
 
-		SDL_GL_SwapWindow(win);
-	} while (!fin);
-	//FIN LOOP PRINCIPAL
+	
+    while (!fin)
+    {
+        while (SDL_PollEvent(&evento))
+        {
+            if (evento.type == SDL_QUIT)
+            {
+                fin = true;
+            }
+        }
 
-	renderr ren;
-	//ren.guardado(imagen* img);
-	SDL_GL_DeleteContext(context);
-	SDL_DestroyWindow(win);
-	SDL_Quit();
-	return 0;
+        if (!esc.termino())
+        {
+            // Renderiza la escena y la imagen intermedia
+            esc.Render(render, 1);
+            renderr::algoritmo(esc.get_imagen_final(), esc.get_iter(), render);
+        }
+        else
+        {
+
+            renderr::guardado(esc.get_imagen_final());
+            renderr::guardado(esc.get_imagen_reflexion());
+            renderr::guardado(esc.get_imagen_refraccion());
+            fin = true;
+        }
+        SDL_RenderPresent(render);
+        //SDL_Delay(5000);
+    }
+
+    SDL_DestroyRenderer(render);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
+    FreeImage_DeInitialise();
+    std::cout << "Resources cleaned up and program terminated successfully.\n";
+    return 0;
 }
+
+
