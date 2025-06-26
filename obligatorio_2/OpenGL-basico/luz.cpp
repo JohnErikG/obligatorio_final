@@ -15,7 +15,7 @@ bool luz::iluminacion(vector3& interseccion, vector3& normal, std::vector<objeto
 			if (obj != actual && obj->intereseccion(sombra,inter, barido)) {
 				float inter_dist = (inter - interseccion).getNorm();
 				float luz_dist = (posicion - interseccion).getNorm();
-				if (inter_dist < luz_dist) {
+				if (inter_dist > luz_dist) {
 					continue; // Hay un objeto entre la luz y el punto de intersección
 				}
 				inte = std::max(0.0f, inte -(1-  obj->gettransparaencia()));

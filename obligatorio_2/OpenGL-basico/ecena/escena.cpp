@@ -287,7 +287,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
     rayo shadow_ray(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
 
     const double prod = normal_interseccion.dot_product(light_direction);
-
+    std::cout << prod << "\n\n";
     if (prod < 0.0) // Solo considerar si la luz incide en la superficie
     {
         return calc_color;
@@ -345,7 +345,7 @@ color escena::calcular_especular(rayo& rayo, const vector3& punto_interseccion, 
 {
     vector3 light_direction = (luz->getPosicion() - punto_interseccion).normalize();
     vector3 view_direction = (rayo.getOrigen() - punto_interseccion).normalize();
-    vector3 reflection_direction = (light_direction - normal_interseccion*(2.0 * normal_interseccion.dot_product(light_direction))).normalize();
+    vector3 reflection_direction = (-light_direction + normal_interseccion*(2.0 * normal_interseccion.dot_product(light_direction))).normalize();
 
     double reflection_view_dot = reflection_direction.dot_product(view_direction);
 

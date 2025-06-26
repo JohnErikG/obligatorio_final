@@ -9,10 +9,11 @@ private:
 	vector3 posicion;
 	vector3 colo;
 	float intensidad;
-
+	color co;
 public:	
 	luz(const vector3& pos, const vector3& col, double inten)
 		: posicion(pos), colo(col), intensidad(inten) {
+		co = color(colo.get_x(), colo.get_y(), colo.get_z(), intensidad);
 	}
 	vector3 getPosicion() const { return posicion; }
 	color getColor() const { return color(colo.get_x(), colo.get_y(), colo.get_z(), intensidad); }
