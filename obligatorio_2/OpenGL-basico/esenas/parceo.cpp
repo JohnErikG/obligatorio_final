@@ -1,7 +1,7 @@
 #include "parceo.h"
 #include <string>
 #include <vector>
-
+#include <iostream>
 
 
 vector3 parceo::parseovec3(char* vec, tinyxml2::XMLElement* element)
@@ -10,7 +10,7 @@ vector3 parceo::parseovec3(char* vec, tinyxml2::XMLElement* element)
 	float x = vector->FloatAttribute("x");
 	float y = vector->FloatAttribute("y");
 	float z = vector->FloatAttribute("z");
-	
+	std::cout << "Vector3 parsed: " << x << ", " << y << ", " << z << std::endl;
 	return vector3(x, y, z);
 }
 

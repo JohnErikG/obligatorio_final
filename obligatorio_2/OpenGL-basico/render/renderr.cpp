@@ -134,7 +134,7 @@ void renderr::algoritmo(imagen& img, int maxX, SDL_Renderer* ren)
             return;
         }
 
-        SDL_RenderClear(ren);
+        //SDL_RenderClear(ren);
         if (SDL_RenderCopy(ren, texture, NULL, NULL) != 0)
         {
 

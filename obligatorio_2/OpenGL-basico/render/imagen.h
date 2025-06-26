@@ -5,15 +5,15 @@ enum typo
 {
 	normal, reflexion, refraccion
 };
-class imagen
+struct imagen
 {
 
-private:
+
 	typo tipo;
 	unsigned int id;
 	int ancho, alto;
 	std::vector <pixel> pixeles;
-public :
+
 	explicit imagen(int ancho, int alto,std::vector<pixel>& vector, typo tipo = normal);
 	int getAncho() const { return ancho; }
 	int getAlto() const { return alto; }
