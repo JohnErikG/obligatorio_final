@@ -120,6 +120,5 @@ camara* parceo::parseCamara(tinyxml2::XMLElement* element, int ancho, int alto)
 	const auto up = parseovec3("up", element);
 
 	return new camara(position, look_at, up, ancho, alto);
-	return nullptr;
 }
 

@@ -15,7 +15,6 @@ using namespace std;
 int main(int argc, char *argv[]) {
 	//INICIALIZACION
 
-    std::cout << "aaaaaaaaaaaaaaa\n";
 	escena esc("../esena1.xml");
 
 	std::cout << "Escena initialized successfully.\n";
@@ -35,10 +34,6 @@ int main(int argc, char *argv[]) {
 
 
 
-	bool fin = false;
-
-	SDL_Event evento;
-
 
 
 	SDL_Renderer* render = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
@@ -53,6 +48,10 @@ int main(int argc, char *argv[]) {
 	SDL_SetRenderDrawColor(render, 0, 0, 0, 255); 
 	SDL_RenderClear(render);
 	SDL_RenderPresent(render); 
+    bool fin = false;
+
+    SDL_Event evento;
+
 
     std::cout << "SDL Renderer created successfully.\n";
     while (!fin)
@@ -70,7 +69,7 @@ int main(int argc, char *argv[]) {
             // Renderiza la escena y la imagen intermedia
             esc.Render(render, 1);
             renderr::algoritmo(esc.get_imagen_final(), esc.get_iter(), render);
-			std::cout << "Rendering frame: " << esc.get_iter() << '\n';
+			
         }
         else
         {

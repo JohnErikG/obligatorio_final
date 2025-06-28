@@ -1,6 +1,8 @@
 #pragma once
 #include "../utilidades/vector3.h"
 #include <iostream>
+#include <cmath>
+#include <ostream>
 #include "../ray_tracing/rayo.h"
 class camara
 {
@@ -26,6 +28,10 @@ public:
         U_ = U_ * horizontal_size_;
         V_ = V_ * (horizontal_size_ / aspect_ratio_);
         camera_centre_ = position_ + (direction_ * length_);
+        std::cout << "Camera created\n";
+        std::cout << "- Position: " << position_ << "\n";
+        std::cout << "- Look at: " << look_at_ << "\n";
+        std::cout << "- Up: " << up_ << "\n";
     }
 
     double get_aspect_ratio() const;

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include <cmath>
 
 class vector3
@@ -45,5 +45,11 @@ public:
     vector3 symmetrical(const vector3& other) const;
     vector3 cross_product(const vector3& other) const;
     static vector3 zero();
+
+    friend std::ostream& operator<<(std::ostream& os, const vector3& v)
+    {
+        os << "(" << v.get_x() << ", " << v.get_y() << ", " << v.get_z() << ")";
+        return os;
+    }
     void reset();
 };

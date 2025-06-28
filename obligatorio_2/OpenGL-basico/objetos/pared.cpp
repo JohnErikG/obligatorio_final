@@ -7,11 +7,12 @@ bool pared::intereseccion(rayo& r, vector3& punto, vector3& nor)  {
 	if (fabs(d) < 1e-6) { return false; } // rayo paralelo al plano
 	vector3 aux = getpos() - r.getOrigen();
 	float t = aux.dot_product(nor) / d;
-	float u, v;
-	if (t < 0) { return false; } // rayo no intersecta el plano
-	else if (t > 0.0) {
+	
+
+ if (t > 0.0) {
 		vector3 p = r.getOrigen() + rN * t; // punto de intersección
 		vector3 paux = p - getpos(); // vector desde el centro de la pared al punto de intersección
+		float u, v;
 		if (nor == vector3(1, 0, 0) || nor == vector3(-1, 0, 0)) { // pared vertical
 			u = (paux.get_y() * punto1.get_z() - paux.get_z() * punto1.get_y()) / (punto2.get_y() * punto1.get_z() - punto2.get_z() * punto1.get_y());
 			v = (paux.get_z() * punto2.get_y() - paux.get_y() * punto2.get_z()) / (punto2.get_y() * punto1.get_z() - punto2.get_z() * punto1.get_y());
@@ -39,7 +40,7 @@ bool pared::intereseccion(rayo& r, vector3& punto, vector3& nor)  {
 			return true;
 		}
 	}
-	return true;
+ return false;
 }
 
 pared::~pared()

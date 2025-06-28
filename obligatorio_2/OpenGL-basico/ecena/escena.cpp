@@ -101,8 +101,7 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
     if (!terminado_)
     {
         /* Creamos el rayo que sale de la camara, el cual usaremos para el trazado de rayos */
-        rayo ra = rayo(camara_->get_position(), vector3(0, 0, 0 ));
-        std::cout << camara_->get_direction().get_x() << "\n";
+        rayo ra = rayo(camara_->get_position(), vector3(1, 0, 0 ));
         float x_factor = 2.0 / (float)ancho_;
         float y_factor = 2.0 / (float)alto_;
         int n = 2; // Número de celdas por lado, para un total de n*n rayos por píxel
@@ -254,8 +253,9 @@ color escena::calcular_color(rayo& ra, vector3 punto_interseccion, vector3 norma
     
 }
 
-color escena::whitted_ray_tracing(rayo& rayo, double& aux_reflectividad, double& aux_refractividad, int nivel)
+color escena::whitted_ray_tracing(rayo& ra, double& aux_reflectividad, double& aux_refractividad, int nivel)
 {
+	
     if (nivel == 0) { return { 0, 0, 0 }; }
 
     objeto* objeto_cercano = nullptr;
@@ -265,14 +265,14 @@ color escena::whitted_ray_tracing(rayo& rayo, double& aux_reflectividad, double&
 
     color px_color = get_color_fondo(); //=> Variable en la que cargaremos el color del pixel
 
-    cast_rayo(rayo, nullptr, objeto_cercano, intersection_point, intersection_normal);
+    cast_rayo(ra, nullptr, objeto_cercano, intersection_point, intersection_normal);
 
     aux_reflectividad = 0.0;
     aux_refractividad = 0.0;
     /* Calcularemos cuanta luz recibe el punto de interseccion */
     if (objeto_cercano != nullptr)
     {
-        px_color = calcular_color(rayo, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
+        px_color = calcular_color(ra, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
         aux_reflectividad = objeto_cercano->getreflectividad();
         aux_refractividad = 1 / objeto_cercano->getindiceRefraccion();
     }
