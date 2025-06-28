@@ -16,9 +16,9 @@ bool escena::cast_rayo(rayo& rayo_casteado, const objeto* objeto_actual, objeto*
 
             if (valid_int)
             {
-                float dist = (intersection_point - rayo_casteado.getOrigen()).getNorm();
+                double dist = (intersection_point - rayo_casteado.getOrigen()).getNorm();
 
-                if (dist < min_dist)
+                if (dist <= min_dist)
                 {
                     min_dist = dist;
                     objeto_cercano = current_object;
@@ -101,7 +101,8 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
     if (!terminado_)
     {
         /* Creamos el rayo que sale de la camara, el cual usaremos para el trazado de rayos */
-        rayo ra = rayo(camara_->get_position(), vector3(1, 0, 0 ));
+        rayo ra = rayo(camara_->get_position(), vector3(0, 0, 0 ));
+
         float x_factor = 2.0 / (float)ancho_;
         float y_factor = 2.0 / (float)alto_;
         int n = 2; // Número de celdas por lado, para un total de n*n rayos por píxel
@@ -119,7 +120,7 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
         {
             fin = x + progreso;
         }
-        for (x; x < fin; x++)
+        for ( x; x < fin; x++)
         {
             for (int y = 0; y < alto_; y++)
             {
@@ -140,6 +141,7 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
                         double norm_x = sample_x * x_factor - 1.0;
                         double norm_y = sample_y * y_factor - 1.0;
 
+						
                         // Casteamos el rayo para que pase por el píxel normalizado (x, y)
                         camara_->generate_ray(norm_x, norm_y, ra);
 
@@ -176,7 +178,31 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
         }
     }
 }
+color escena::whitted_ray_tracing(rayo& ra, double& aux_reflectividad, double& aux_refractividad, int nivel)
+{
 
+    if (nivel == 0) { return color(0,0, 0); }
+
+    objeto* objeto_cercano = nullptr;
+    vector3 intersection_point = vector3(0, 0, 0);
+    vector3 intersection_normal = vector3(0, 0, 0);
+    //=> Variable en la que cargaremos la normal del objeto en el punto de interseccion
+
+    color px_color = get_color_fondo(); //=> Variable en la que cargaremos el color del pixel
+
+    cast_rayo(ra, nullptr, objeto_cercano, intersection_point, intersection_normal);
+
+    aux_reflectividad = 0.0;
+    aux_refractividad = 0.0;
+    /* Calcularemos cuanta luz recibe el punto de interseccion */
+    if (objeto_cercano != nullptr)
+    {
+        px_color = calcular_color(ra, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
+        aux_reflectividad = objeto_cercano->getreflectividad();
+        aux_refractividad = 1 / objeto_cercano->getindiceRefraccion();
+    }
+    return px_color;
+}
 bool escena::termino()
 {
 	return terminado_;
@@ -253,31 +279,7 @@ color escena::calcular_color(rayo& ra, vector3 punto_interseccion, vector3 norma
     
 }
 
-color escena::whitted_ray_tracing(rayo& ra, double& aux_reflectividad, double& aux_refractividad, int nivel)
-{
-	
-    if (nivel == 0) { return { 0, 0, 0 }; }
 
-    objeto* objeto_cercano = nullptr;
-	vector3 intersection_point = vector3(0, 0, 0);
-    vector3 intersection_normal = vector3(0, 0, 0);
-    //=> Variable en la que cargaremos la normal del objeto en el punto de interseccion
-
-    color px_color = get_color_fondo(); //=> Variable en la que cargaremos el color del pixel
-
-    cast_rayo(ra, nullptr, objeto_cercano, intersection_point, intersection_normal);
-
-    aux_reflectividad = 0.0;
-    aux_refractividad = 0.0;
-    /* Calcularemos cuanta luz recibe el punto de interseccion */
-    if (objeto_cercano != nullptr)
-    {
-        px_color = calcular_color(ra, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
-        aux_reflectividad = objeto_cercano->getreflectividad();
-        aux_refractividad = 1 / objeto_cercano->getindiceRefraccion();
-    }
-    return px_color;
-}
 
 color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano, luz* luz)
 {

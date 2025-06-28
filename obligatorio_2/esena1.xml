@@ -10,7 +10,7 @@
             <color red="0" blue="200" green="15"/>
         </ambient>
         <camera>
-            <position x="0" y="0" z="0"/>
+            <position x="0" y="0" z="1"/>
             <look_at x="0" y="0" z="-1"/>
             <up x="0" y="1" z="0"/>
         </camera>
@@ -18,56 +18,29 @@
                indiceRef="0">
             <color x="225" y="225" z="225"/>
             
-                <normal x="0" y="0" z="1"/>
-                <position x="0" y="-10" z="-35"/>
+                <normal x="1" y="0" z=""/>
+                <position x="-14" y="-10" z="-35"/>
 
         </shape>
-		  <shape id="left_plane" tipo="pared" alfa = "1" reflex="0" brillo="0" alto="35" ancho="35" translucido="0"
+		<shape id="fondo_plane" tipo="pared" alfa = "1" reflex="0" brillo="0" alto="35" ancho="35" translucido="0"
                indiceRef="0">
-            <color x="255" y="255" z="255"/>
+            <color x="55" y="55" z="55"/>
           
-                <normal x="1" y="0" z="0"/>
-                <position x="-12" y="0" z="-35"/>
-           
-        </shape>
-		<shape id="left_plane" tipo="pared" alfa = "1" reflex="0" brillo="1" alto="35" ancho="35" translucido="0"
-               indiceRef="0">
-            <color x="255" y="255" z="255"/>
-          
-                <normal x="1" y="0" z="0"/>
+                <normal x="0" y="0" z="1"/>
                 <position x="0" y="0" z="-35"/>
            
         </shape>
-		<shape id="left_plane" tipo="pared" alfa = "1" reflex="0" brillo="1" alto="35" ancho="35" translucido="0"
+		<shape id="paredDerecha" tipo="pared" alfa = "1" reflex="0" brillo="0" alto="35" ancho="35" translucido="0"
                indiceRef="0">
-            <color x="255" y="255" z="255"/>
-          
-                <normal x="1" y="0" z="0"/>
-                <position x="0" y="0" z="35"/>
-           
+            <color x="0" y="0" z="255"/>
+                <normal x="-1" y="0" z="0"/>
+                <position x="14" y="-10" z="-35"/>
         </shape>
-		<shape id="sphere_0" tipo="esfera" alfa = "1" reflex="0" brillo="1" radio="1" translucido="0"
-               indiceRef="1">
-            <color x="0" y="240" z="0"/>
-            
-                <position x="0" y="0" z="-30"/>
-            
-        </shape>
+
 		 <luz id="light_0" intensity="15">
-            <position x="10" y="-9" z="-30"/>
+            <position x="-10" y="5" z="30"/>
             <color x="255" y="155" z="200"/>
         </luz>
-		<luz id="light_1" intensity="30">
-            <position x="0" y="9" z="3"/>
-            <color x="255" y="0" z="0"/>
-        </luz>
-		<shape id="mesa1" tipo="mesa" alfa = "1" reflex="0" brillo="1" width="16" height="6" depth="5"
-               translucido="0"
-               indiceRef="0">
-            <color x="255" y="255" z="255"/>
-            
-                <position x="-9" y="-10" z="-26"/>
-            
-        </shape>
+
 </scene>
 </document>

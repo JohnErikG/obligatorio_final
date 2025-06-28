@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
             // Renderiza la escena y la imagen intermedia
             esc.Render(render, 1);
             renderr::algoritmo(esc.get_imagen_final(), esc.get_iter(), render);
-            std::cout << "Rendering frame: " << esc.get_iter() << '\n';
+        
         }
         else
         {

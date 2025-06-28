@@ -64,7 +64,7 @@ vector3 vector3::operator-() const
 
 float vector3::dot_product(const vector3& other) const
 {
-    return (x_ * other.x_ + y_ * other.y_ + z_ * other.z_);
+    return x_ * other.x_ + y_ * other.y_ + z_ * other.z_;
 }
 
 float vector3::angle_with(const vector3& other) const
