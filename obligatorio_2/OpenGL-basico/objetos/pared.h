@@ -10,8 +10,8 @@ class pared : public objeto {
 	float altura, ancho;
 public:
 	pared(vector3 pos, vector3 normal_, vector3 color, float alfa,float bri, float refle, float transluc, float indiRef, float h, float w) : objeto(pos, color, alfa,bri, refle, transluc, indiRef) {
-		altura = 100;
-		ancho = 100;
+		altura = h;
+		ancho = w;
 		normal = normal_.normalize();
 		a = normal.get_x();
 		b = normal.get_y();
