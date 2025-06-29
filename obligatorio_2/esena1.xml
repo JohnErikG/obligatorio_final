@@ -57,6 +57,22 @@
             <color x="255" y="0" z="255"/>
             <position x="0" y="5" z="-15"/>
         </shape>
+				<shape id="esfera1" tipo="esfera" alfa = "1" reflex="0" brillo="0" radio="1" translucido="0.6"
+               indiceRef="1.5">
+            <color x="255" y="0" z="255"/>
+            <position x="0" y="5" z="-15"/>
+        </shape>
+		<shape id="mesa" tipo="mesa" alfa = "1" reflex="0" brillo="0"  alto="5" ancho="10" profundidad= "8"translucido="0"
+               indiceRef="0">
+            <color x="30" y="30" z="30"/>
+            <position x="-5" y="-10" z="-25"/>
+        </shape>
+		<shape id="cilindro1" tipo="cilindro" alfa = "1" reflex="0" brillo="0"  alto="2"  radio= "1"translucido="0"
+               indiceRef="0">
+            <color x="10" y="200" z="10"/>
+            <position x="-1" y="-5" z="-20"/>
+        </shape>
+		
 		
 </scene>
 </document>
