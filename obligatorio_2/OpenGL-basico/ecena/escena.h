@@ -10,7 +10,7 @@
 class escena
 {
     color color_fondo_, ambiente_;
-    double near_, far_;
+    float near_, far_;
     int ancho_, alto_;
     camara* camara_;
     std::vector<objeto*> objects_;
@@ -39,12 +39,12 @@ public:
     int get_iter();
     int get_ancho();
     int get_alto();
-    double get_far();
-    double get_near();
+    float get_far();
+    float get_near();
     color get_color_fondo();
     color calcular_color(rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano,
         int nivel);
-    color whitted_ray_tracing(rayo& rayo, double& aux_reflectividad, double& aux_refractividad, int nivel);
+    color whitted_ray_tracing(rayo& rayo, float& aux_reflectividad, float& aux_refractividad, int nivel);
     color calcular_difuso(rayo& rayo_camara, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano,
         luz* luz);
     color calcular_especular(rayo& rayo, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano, luz*

@@ -10,7 +10,6 @@ vector3 parceo::parseovec3(char* vec, tinyxml2::XMLElement* element)
 	float x = vector->FloatAttribute("x");
 	float y = vector->FloatAttribute("y");
 	float z = vector->FloatAttribute("z");
-	std::cout << "Vector3 parsed: " << x << ", " << y << ", " << z << std::endl;
 	return vector3(x, y, z);
 }
 
@@ -89,9 +88,9 @@ color parceo::parseColor(tinyxml2::XMLElement* colorElemen)
 {
 	const auto fill = colorElemen->FirstChildElement("color");
 
-	double  r = fill->FloatAttribute("red");
-	double g = fill->FloatAttribute("green");
-	double  b = fill->FloatAttribute("blue");
+	float  r = fill->FloatAttribute("red");
+	float g = fill->FloatAttribute("green");
+	float  b = fill->FloatAttribute("blue");
 
 	return  color(r, g, b);
 }

@@ -66,10 +66,7 @@
     <ClCompile Include="objetos\mesa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="objetos\cili.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cil.cpp">
+    <ClCompile Include="objetos\cilindro.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,9 +98,6 @@
     <ClInclude Include="luz.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="esenas\parceo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="esenas\tinyxml2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -122,10 +116,10 @@
     <ClInclude Include="objetos\mesa.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="objetos\cili.h">
+    <ClInclude Include="objetos\cilindro.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cil.h">
+    <ClInclude Include="esenas\parceo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

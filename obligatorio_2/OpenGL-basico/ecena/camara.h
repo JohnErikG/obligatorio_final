@@ -11,16 +11,16 @@ class camara
     vector3 U_, V_; //NO ESTAN NORMALIZADOS, REPRESENTAN LAS DIMENSIONES DE LA PANTALLA
     vector3 camera_centre_;
     int width_, height_;
-    double aspect_ratio_;
-    double horizontal_size_;
-    double length_;
+    float aspect_ratio_;
+    float horizontal_size_;
+    float length_;
 
 public:
     explicit camara(const vector3& position, const vector3& look_at, const vector3& up, int width, int height)
         : position_(position), look_at_(look_at), up_(up.normalize()), width_(width), height_(height)
     {
-        aspect_ratio_ = (double)width_ / (double)height_;
-        horizontal_size_ = (double)width_ / 2;
+        aspect_ratio_ = (float)width_ / (float)height_;
+        horizontal_size_ = (float)width_ / 2;
         length_ = 500;
         direction_ = (look_at_ - position_).normalize();
         U_ = (direction_ * up_).normalize();
@@ -34,9 +34,9 @@ public:
         std::cout << "- Up: " << up_ << "\n";
     }
 
-    double get_aspect_ratio() const;
-    double get_horizontal_size() const;
-    double get_length() const;
+    float get_aspect_ratio() const;
+    float get_horizontal_size() const;
+    float get_length() const;
     vector3 get_position() const;
     vector3 get_direction() const;
     vector3 get_up() const;
@@ -44,6 +44,6 @@ public:
     vector3 get_V() const;
 
 
-    void generate_ray(double u, double v, rayo& ra);
+    void generate_ray(float u, float v, rayo& ra);
 
 };

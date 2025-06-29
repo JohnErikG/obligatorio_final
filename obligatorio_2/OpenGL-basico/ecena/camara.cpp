@@ -17,17 +17,17 @@ vector3 camara::get_direction() const
 
 
 
-double camara::get_aspect_ratio() const
+float camara::get_aspect_ratio() const
 {
     return aspect_ratio_;
 }
 
-double camara::get_horizontal_size() const
+float camara::get_horizontal_size() const
 {
     return horizontal_size_;
 }
 
-double camara::get_length() const
+float camara::get_length() const
 {
     return length_;
 }
@@ -38,6 +38,7 @@ vector3 camara::get_U() const
     return U_;
 }
 
+
 vector3 camara::get_V() const
 {
     return V_;
@@ -46,7 +47,7 @@ vector3 camara::get_V() const
 
 
 
-void camara::generate_ray(double u, double v, rayo& ray)
+void camara::generate_ray(float u, float v, rayo& ray)
 {
 
     vector3 pixel = camera_centre_ + (U_ * u);

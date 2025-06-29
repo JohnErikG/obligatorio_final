@@ -17,7 +17,7 @@ public:
 	void setDireccion(const vector3 d);
 	vector3 get_rayo_vector() const;
 	rayo reflejar(const vector3& interseccion, const vector3& normal) const;
-	rayo refractar(const vector3& interseccion, const ::vector3& normal, double indice_refraccion) const;
+	rayo refractar(const vector3& interseccion, const ::vector3& normal, float indice_refraccion) const;
 
 };
 

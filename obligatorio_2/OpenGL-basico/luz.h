@@ -11,7 +11,7 @@ private:
 	float intensidad;
 	color co;
 public:	
-	luz(const vector3& pos, const vector3& col, double inten)
+	luz(const vector3& pos, const vector3& col, float inten)
 		: posicion(pos), colo(col), intensidad(inten) {
 		co = color(colo.get_x(), colo.get_y(), colo.get_z(), intensidad);
 	}

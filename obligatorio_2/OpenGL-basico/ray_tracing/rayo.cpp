@@ -35,23 +35,23 @@ rayo rayo::reflejar(const vector3& interseccion, const vector3& normal) const
 }
 
 rayo rayo::refractar(const vector3& interseccion, const vector3& normal,
-    double indice_refraccion) const
+    float indice_refraccion) const
 {
     const vector3 rayo_incidente = this->getDireccion().normalize();
     const vector3 normal_int = normal.normalize();
 
-    const double n1 = 1.0; 
-    const double n2 = indice_refraccion;
+    const float n1 = 1.0; 
+    const float n2 = indice_refraccion;
 
-    double cos_i = -rayo_incidente.dot_product(normal_int);
-    double sin_t2 = (n1 / n2) * (n1 / n2) * (1.0 - cos_i * cos_i);
+    float cos_i = -rayo_incidente.dot_product(normal_int);
+    float sin_t2 = (n1 / n2) * (n1 / n2) * (1.0 - cos_i * cos_i);
 
     if (sin_t2 > 1.0)
     {
         return rayo(interseccion, this->getDireccion());
     }
 
-    double cos_t = std::sqrt(1.0 - sin_t2);
+    float cos_t = std::sqrt(1.0 - sin_t2);
     vector3 direccion_refractada = (rayo_incidente * (n1 / n2) + normal_int * (cos_t - cos_i * (n1 / n2))).normalize();
 
     return rayo (interseccion + direccion_refractada * 0.001, direccion_refractada);
