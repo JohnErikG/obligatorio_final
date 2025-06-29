@@ -27,7 +27,7 @@ bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 	} else {
 		t = std::min(r1, r2);
 	}
-	punto = ra.getOrigen() + ra.getDireccion() * t;
+	punto = ra.getOrigen() + ra.getDireccion().normalize() * t;
 	normal = (punto - getpos()).normalize();
 	return true; //hay intereseccion
 }

@@ -1,10 +1,1 @@
-﻿  renderr.cpp
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(16,50): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
-  (compilando archivo de origen "render/renderr.cpp")
-  
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\pixel.h(16,47): warning C4244: 'argumento': conversión de 'const int' a 'const float'; posible pérdida de datos
-  (compilando archivo de origen "render/renderr.cpp")
-  
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\imagen.h(28,1): warning C4715: 'imagen::getpixel': no todas las rutas de acceso de control devuelven un valor
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\imagen.h(39,1): warning C4715: 'imagen::getTipo': no todas las rutas de acceso de control devuelven un valor
-  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe
+﻿  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Debug\OpenGL-basico.exe
