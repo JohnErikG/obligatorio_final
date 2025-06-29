@@ -1,7 +1,7 @@
 #include "escena.h"
 #include <iostream>
 #include<String>
-int escena::max_depth_ = 1000;
+int escena::max_depth_ = 10;
 bool escena::cast_rayo(rayo& rayo_casteado, const objeto* objeto_actual, objeto*& objeto_cercano, vector3& punto_interseccion, vector3& normal_interseccion) const
 {
     double min_dist = 1e6;
@@ -218,11 +218,11 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
                 pixel px = pixel(x, y, final_color);
                 pixel px_reflectividad = pixel(x, y, color(255 * final_reflectividad, 255 * final_reflectividad,
                     255 * final_reflectividad));
-                pixel px_refractividad = pixel(x, y, color(255 * final_refractividad, 255 * final_refractividad,
+                pixel px_refrx = pixel(x, y, color(255 * final_refractividad, 255 * final_refractividad,
                     255 * final_refractividad));
                 final_.agregarP(px);
                 aux_relfexion_.agregarP(px_reflectividad);
-                aux_refraccion_.agregarP(px_refractividad);
+                aux_refraccion_.agregarP(px_refrx);
             }
         }
     }
@@ -248,7 +248,7 @@ color escena::whitted_ray_tracing(rayo& ra, double& aux_reflectividad, double& a
     {
         px_color = calcular_color(ra, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
         aux_reflectividad = objeto_cercano->getreflectividad();
-        aux_refractividad = 1 / objeto_cercano->getindiceRefraccion();
+        aux_refractividad =  objeto_cercano->getindiceRefraccion();
     }
     return px_color;
 }
@@ -315,7 +315,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
                     light_color_attenuation = light_color_attenuation.combinar(closest_object->getColor(),
                                                 closest_object->gettransparaencia());
                     // Continuar el rayo de sombra
-                    sombra = rayo(nuevaNormal + light_direction * 0.001, light_direction);
+                    sombra = rayo(nuevoPunto + light_direction * 0.001, light_direction);
                 }
                 else
                 {
@@ -353,7 +353,7 @@ color escena::calcular_especular(rayo& rayo, const vector3& punto_interseccion, 
 
     if (reflection_view_dot < 0.0)
     {
-        return { 0, 0, 0 };
+        return color(0,0,0);
     }
 
     double shininess = objeto_cercano->getbrillo();
