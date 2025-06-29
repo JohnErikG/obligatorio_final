@@ -52,15 +52,15 @@
             <position x="-10" y="5" z="30"/>
             <color x="255" y="255" z="255"/>
         </luz>
-		<shape id="piso" tipo="esfera" alfa = "1" reflex="0" brillo="0" radio="1" translucido="0"
+		<shape id="esfera" tipo="esfera" alfa = "1" reflex="1" brillo="0" radio="1" translucido="0"
                indiceRef="0">
             <color x="255" y="0" z="255"/>
             <position x="0" y="5" z="-15"/>
         </shape>
-				<shape id="esfera1" tipo="esfera" alfa = "1" reflex="0" brillo="0" radio="1" translucido="0.6"
-               indiceRef="1.5">
-            <color x="255" y="0" z="255"/>
-            <position x="0" y="5" z="-15"/>
+			<shape id="esfera1" tipo="esfera" alfa = "1" reflex="0" brillo="25" radio="2" translucido="0.7"
+               indiceRef="1.4">
+            <color x="150" y="150" z="155"/>
+            <position x="-3" y="-3" z="-20"/>
         </shape>
 		<shape id="mesa" tipo="mesa" alfa = "1" reflex="0" brillo="0"  alto="5" ancho="10" profundidad= "8"translucido="0"
                indiceRef="0">
@@ -70,7 +70,7 @@
 		<shape id="cilindro1" tipo="cilindro" alfa = "1" reflex="0" brillo="0"  alto="2"  radio= "1"translucido="0"
                indiceRef="0">
             <color x="10" y="200" z="10"/>
-            <position x="-1" y="-5" z="-20"/>
+            <position x="-2" y="-5" z="-20"/>
         </shape>
 		
 		

@@ -286,7 +286,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
     color calc_color = { 0, 0, 0 };
 
     const vector3 light_direction = (luz->getPosicion() - punto_interseccion).normalize();
-    rayo shadow_ray(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
+    rayo sombra(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
 
     const double prod = normal_interseccion.dot_product(light_direction);
     
@@ -296,14 +296,14 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
     }
 
     double light_attenuation = 1.0; // Atenuación de la luz
-    color light_color_attenuation = { 0, 0, 0 }; // Atenuación por color de la luz
+    color light_color_attenuation = color(0,0,0); // Atenuación por color de la luz
 
    objeto* closest_object = nullptr;
-    vector3 new_intersection_point, new_intersection_normal;
+    vector3 nuevoPunto, nuevaNormal;
 
-    while (cast_rayo(shadow_ray, objeto_cercano, closest_object, new_intersection_point, new_intersection_normal))
+    while (cast_rayo(sombra, objeto_cercano, closest_object, nuevoPunto, nuevaNormal))
     {
-        const double intersection_distance = (new_intersection_point - punto_interseccion).getNorm();
+        const double intersection_distance = (nuevoPunto - punto_interseccion).getNorm();
         const double light_distance = (luz->getPosicion() - punto_interseccion).getNorm();
         if (closest_object->gettransparaencia() < 1.0)
         {
@@ -315,7 +315,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
                     light_color_attenuation = light_color_attenuation.combinar(closest_object->getColor(),
                         closest_object->gettransparaencia());
                     // Continuar el rayo de sombra
-                    shadow_ray = rayo(new_intersection_point + light_direction * 0.001, light_direction);
+                    sombra = rayo(nuevaNormal + light_direction * 0.001, light_direction);
                 }
                 else
                 {
@@ -330,7 +330,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
         }
         else
         {
-            shadow_ray = rayo(new_intersection_point + light_direction * 0.001, light_direction);
+            sombra = rayo(nuevoPunto + light_direction * 0.001, light_direction);
         }
     }
 
@@ -366,11 +366,11 @@ color escena::calcular_especular(rayo& rayo, const vector3& punto_interseccion, 
 
 color escena::calcular_reflexion( const rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
 {
-    if (nivel == 0 || objeto_cercano->getreflectividad() <= 0.0) { return { 0, 0, 0 }; }
+    if (nivel == 0 || objeto_cercano->getreflectividad() <= 0.0) { color(0,0,0); }
 
-    rayo reflected_ray = ra.reflejar(punto_interseccion, normal_interseccion);
+    rayo raR = ra.reflejar(punto_interseccion, normal_interseccion);
     double trash1, trash2;
-    return whitted_ray_tracing(reflected_ray, trash1, trash2, nivel - 1);
+    return whitted_ray_tracing(raR, trash1, trash2, nivel - 1);
 
 
 
@@ -382,6 +382,7 @@ color escena::calcular_translucidez(rayo& ra, vector3 punto_interseccion, vector
 
     if (objeto_cercano->gettransparaencia() > 0.0)
     {
+
         vector3 rayo_vista = ra.getDireccion().normalize();
         vector3 normal = normal_interseccion.normalize();
 
