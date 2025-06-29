@@ -320,7 +320,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
                 else
                 {
                     // El objeto es opaco, bloquear la luz completamente
-                    return { 0, 0, 0 };
+                    return color(0, 0, 0);
                 }
             }
             else
