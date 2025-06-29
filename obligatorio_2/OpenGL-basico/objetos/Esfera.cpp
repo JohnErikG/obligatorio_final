@@ -7,7 +7,7 @@ bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 	vector3 r = ra.getOrigen() - getpos();
 	vector3 RN = ra.getDireccion().normalize();
 	float a = RN.dot_product(RN); 
-	float b = 2 * RN.dot_product(r);
+	float b = 2 * r.dot_product(RN);
 	float c = r.dot_product(r) - radio * radio;
 	float discriminante = b * b - 4 * a * c;
 	if (discriminante < 0.0) {

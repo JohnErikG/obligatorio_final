@@ -89,6 +89,55 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
         <<
         '\n';
 }
+bool escena::termino()
+{
+    return terminado_;
+}
+
+imagen escena::get_imagen_final()
+{
+    return final_;
+}
+
+imagen escena::get_imagen_reflexion()
+{
+    return aux_relfexion_;
+}
+
+imagen escena::get_imagen_refraccion()
+{
+    return aux_refraccion_;
+}
+
+int escena::get_iter()
+{
+    return iteraciones_;
+}
+
+int escena::get_ancho()
+{
+    return ancho_;
+}
+
+int escena::get_alto()
+{
+    return alto_;
+}
+
+double escena::get_far()
+{
+    return far_;
+}
+
+double escena::get_near()
+{
+    return near_;
+}
+
+color escena::get_color_fondo()
+{
+    return color_fondo_;
+}
 
 
 
@@ -203,65 +252,16 @@ color escena::whitted_ray_tracing(rayo& ra, double& aux_reflectividad, double& a
     }
     return px_color;
 }
-bool escena::termino()
-{
-	return terminado_;
-}
-
-imagen escena::get_imagen_final()
-{
-	return final_;
-}
-
-imagen escena::get_imagen_reflexion()
-{
-	return aux_relfexion_;
-}
-
-imagen escena::get_imagen_refraccion()
-{
-	return aux_refraccion_;
-}
-
-int escena::get_iter()
-{
-	return iteraciones_;
-}
-
-int escena::get_ancho()
-{
-	return ancho_;
-}
-
-int escena::get_alto()
-{
-	return alto_;
-}
-
-double escena::get_far()
-{
-    return far_;
-}
-
-double escena::get_near()
-{
-    return near_;
-}
-
-color escena::get_color_fondo()
-{
-    return color_fondo_;
-}
 
 color escena::calcular_color(rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
 {
-    if (nivel == 0) { return { 0, 0, 0 }; }
+    if (nivel == 0) { return color(0,0,0); }
 
     const color diffuse_specular_color = ambiente_ + calcular_difuso_especular(
         ra, punto_interseccion, normal_interseccion,
         objeto_cercano);
-    color reflection_color = { 0, 0, 0 };
-    color translucent_color = { 0, 0, 0 };
+    color reflection_color = color(0,0,0);
+    color translucent_color = color(0,0,0);
     if (objeto_cercano->getreflectividad() > 0.0)
     {
         reflection_color = calcular_reflexion(ra, punto_interseccion, normal_interseccion, objeto_cercano, nivel - 1);
@@ -283,7 +283,7 @@ color escena::calcular_color(rayo& ra, vector3 punto_interseccion, vector3 norma
 
 color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_interseccion, const vector3& normal_interseccion, const objeto* objeto_cercano, luz* luz)
 {
-    color calc_color = { 0, 0, 0 };
+    color calc_color = color(0,0,0);
 
     const vector3 light_direction = (luz->getPosicion() - punto_interseccion).normalize();
     rayo sombra(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
@@ -313,7 +313,7 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
                 {
                     light_attenuation *= closest_object->gettransparaencia();
                     light_color_attenuation = light_color_attenuation.combinar(closest_object->getColor(),
-                        closest_object->gettransparaencia());
+                                                closest_object->gettransparaencia());
                     // Continuar el rayo de sombra
                     sombra = rayo(nuevaNormal + light_direction * 0.001, light_direction);
                 }
@@ -378,7 +378,7 @@ color escena::calcular_reflexion( const rayo& ra, vector3 punto_interseccion, ve
 
 color escena::calcular_translucidez(rayo& ra, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano, int nivel)
 {
-    color translucency_color = { 0, 0, 0 };
+    color translucency_color = color(0,0,0);
 
     if (objeto_cercano->gettransparaencia() > 0.0)
     {
@@ -425,8 +425,8 @@ color escena::calcular_difuso_especular(rayo& ra, vector3 punto_interseccion, ve
 {
 
 
-color diffuse_color = { 0, 0, 0 };
-color specular_color = { 0, 0, 0 };
+color diffuse_color = color(0,0,0);
+color specular_color = color(0,0,0);
 
 for (luz* luz : lights_)
 {
