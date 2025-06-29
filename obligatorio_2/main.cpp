@@ -14,8 +14,6 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 	//INICIALIZACION
-
-    std::cout << "aaaaaaaaaaaaaaa\n";
 	escena esc("../esena1.xml");
 
 	std::cout << "Escena initialized successfully.\n";
