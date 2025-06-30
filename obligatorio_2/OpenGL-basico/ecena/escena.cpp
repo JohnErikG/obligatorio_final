@@ -163,7 +163,7 @@ void escena::Render(int progreso)
                         float norm_x = sample_x * x_factor - 1.0;
                         float norm_y = sample_y * y_factor - 1.0;
 
-                        camara_->generate_ray(norm_x, norm_y, ra);
+                        camara_->crear_rayo(norm_x, norm_y, ra);
 
                         float aux_reflectividad = 0.0;
                         float aux_refractividad = 0.0;
