@@ -1,1 +1,10 @@
-﻿  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Release\OpenGL-basico.exe
+﻿  mesa.cpp
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\objetos\mesa.cpp(67,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\objetos\mesa.cpp(86,51): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\objetos\mesa.cpp(120,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Generando código
+  5 of 897 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Release\OpenGL-basico.exe
