@@ -12,7 +12,7 @@ bool escena::cast_rayo(rayo& rayo_casteado, const objeto* objeto_actual, objeto*
         if (current_object != objeto_actual)
         {
             vector3 intersection_point, intersection_normal;
-            bool valid_int = current_object->intereseccion(rayo_casteado, intersection_point, intersection_normal);
+            bool valid_int = current_object->calcular_interseccion(rayo_casteado, intersection_point, intersection_normal);
 
             if (valid_int)
             {
@@ -42,19 +42,11 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
 
     tinyxml2::XMLDocument doc;
     auto res = doc.LoadFile(archivo_escena);
-    if (res != tinyxml2::XML_SUCCESS)
-    {
-        throw std::runtime_error("Failed to load file " + std::string(archivo_escena) + ": " + std::to_string(res));
-    }
-
     tinyxml2::XMLPrinter printer;
     doc.Print(&printer);
 
     auto dom_scene = doc.FirstChildElement("document")->FirstChildElement("scene");
-    if (!dom_scene)
-    {
-        throw std::runtime_error("'scene' element not found");
-    }
+
 
     ancho_ = parceo::parceoInt(dom_scene, "width");
     alto_ = parceo::parceoInt(dom_scene, "height");
@@ -63,10 +55,6 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
     aux_relfexion_ = imagen::vacia(ancho_, alto_, reflexion);
     aux_refraccion_ = imagen::vacia(ancho_, alto_, refraccion);
 
-    if (dom_scene->NoChildren())
-    {
-        throw std::runtime_error("No objects found in scene");
-    }
 
     tinyxml2::XMLNode* node = dom_scene->FirstChild();
     do
@@ -80,14 +68,12 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
         else if (element_type == "camera") { camara_ = parceo::parseCamara(element, ancho_, alto_); }
         else if (element_type == "background") {color_fondo_ = parceo::parseColor(element); }
         else if (element_type == "ambient") { ambiente_ = parceo::parseColor(element); }
-        else { throw std::runtime_error("Unknown element type: " + element_type); }
+        else { break; }
 
         node = node->NextSibling();
     } while (node != nullptr);
 
-    std::cout << "Scene loaded" << '\n' << "- Shapes: " << objects_.size() << '\n' << "- Lights: " << lights_.size()
-        <<
-        '\n';
+
 }
 bool escena::termino()
 {
@@ -141,7 +127,7 @@ color escena::get_color_fondo()
 
 
 
-void escena::Render(SDL_Renderer* renderer, int progreso)
+void escena::Render(int progreso)
 {
     if (iteraciones_ >= ancho_)
     {
@@ -149,59 +135,43 @@ void escena::Render(SDL_Renderer* renderer, int progreso)
     }
     if (!terminado_)
     {
-        /* Creamos el rayo que sale de la camara, el cual usaremos para el trazado de rayos */
+
         rayo ra = rayo(camara_->get_position(), vector3(0, 0, 0 ));
 
         float x_factor = 2.0 / (float)ancho_;
         float y_factor = 2.0 / (float)alto_;
-        int n = 2; // Número de celdas por lado, para un total de n*n rayos por píxel
-        float cell_size = 1.0 / (float)n;
+        int n = 2; 
+        float Tcelda = 1.0 / (float)n;
 
-        /* Calculamos todos los píxeles */
+        int x = iteraciones_; 
+        int fin = (x + progreso > ancho_) ? ancho_ : x + progreso;
 
-        int x = iteraciones_; // el pixel siguiente a donde me quedé la última vez. 
-        int fin;
-        if (x + progreso > ancho_)
-        {
-            fin = ancho_;
-        }
-        else
-        {
-            fin = x + progreso;
-        }
         for ( x; x < fin; x++)
         {
             for (int y = 0; y < alto_; y++)
             {
-                color final_color = { 0, 0, 0 }; // Color inicial del píxel
+                color final_color = color(0,0,0); 
                 float final_reflectividad = 0.0;
-                // => En estas variables cargaremos el valor de los coeficientes de reflexion y refraccion en el pixel x, y
                 float final_refractividad = 0.0;
-                /* Para cada celda dentro del píxel */
                 for (int i = 0; i < n; ++i)
                 {
                     for (int j = 0; j < n; ++j)
                     {
-                        // Desplazamiento dentro del píxel
-                        float sample_x = (float)x + (i + 0.5) * cell_size;
-                        float sample_y = (float)y + (j + 0.5) * cell_size;
+                        float sample_x = (float)x + (i + 0.5) * Tcelda;
+                        float sample_y = (float)y + (j + 0.5) * Tcelda;
 
-                        // Normalizamos el pixel por el que pasará el rayo
                         float norm_x = sample_x * x_factor - 1.0;
                         float norm_y = sample_y * y_factor - 1.0;
 
-						
-                        // Casteamos el rayo para que pase por el píxel normalizado (x, y)
                         camara_->generate_ray(norm_x, norm_y, ra);
 
                         float aux_reflectividad = 0.0;
                         float aux_refractividad = 0.0;
 
-                        // Calculamos el color del rayo
                         color sample_color =
                             whitted_ray_tracing(ra, aux_reflectividad, aux_refractividad, max_depth_);
 
-                        // Sumamos el color de la muestra al color final del píxel
+
                         final_color += sample_color;
                         final_reflectividad += aux_reflectividad;
                         final_refractividad += aux_refractividad;
@@ -235,15 +205,13 @@ color escena::whitted_ray_tracing(rayo& ra, float& aux_reflectividad, float& aux
     objeto* objeto_cercano = nullptr;
     vector3 intersection_point = vector3(0, 0, 0);
     vector3 intersection_normal = vector3(0, 0, 0);
-    //=> Variable en la que cargaremos la normal del objeto en el punto de interseccion
 
-    color px_color = get_color_fondo(); //=> Variable en la que cargaremos el color del pixel
+    color px_color = get_color_fondo(); 
 
     cast_rayo(ra, nullptr, objeto_cercano, intersection_point, intersection_normal);
 
     aux_reflectividad = 0.0;
     aux_refractividad = 0.0;
-    /* Calcularemos cuanta luz recibe el punto de interseccion */
     if (objeto_cercano != nullptr)
     {
         px_color = calcular_color(ra, intersection_point, intersection_normal, objeto_cercano, nivel - 1);
@@ -286,19 +254,19 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
     color calc_color = color(0,0,0);
 
     const vector3 light_direction = (luz->getPosicion() - punto_interseccion).normalize();
-    rayo sombra(punto_interseccion + light_direction * 0.001, light_direction); // Avoid self-intersection
+    rayo sombra(punto_interseccion + light_direction * 0.001, light_direction); 
 
     const float prod = normal_interseccion.dot_product(light_direction);
     
-    if (prod < 0.0) // Solo considerar si la luz incide en la superficie
+    if (prod < 0.0) 
     {
         return calc_color;
     }
 
-    float light_attenuation = 1.0; // Atenuación de la luz
-    color light_color_attenuation = color(0,0,0); // Atenuación por color de la luz
+    float light_attenuation = 1.0; 
+    color light_color_attenuation = color(0,0,0); 
 
-   objeto* closest_object = nullptr;
+    objeto* closest_object = nullptr;
     vector3 nuevoPunto, nuevaNormal;
 
     while (cast_rayo(sombra, objeto_cercano, closest_object, nuevoPunto, nuevaNormal))
@@ -314,12 +282,11 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
                     light_attenuation *= closest_object->gettransparaencia();
                     light_color_attenuation = light_color_attenuation.combinar(closest_object->getColor(),
                                                 closest_object->gettransparaencia());
-                    // Continuar el rayo de sombra
+
                     sombra = rayo(nuevoPunto + light_direction * 0.001, light_direction);
                 }
                 else
                 {
-                    // El objeto es opaco, bloquear la luz completamente
                     return color(0, 0, 0);
                 }
             }
@@ -336,10 +303,8 @@ color escena::calcular_difuso(rayo& rayo_camara, const vector3& punto_intersecci
 
     const float intensity = prod * luz->getIntensidad();
 
-    // Calcular color difuso y especular si no está en la sombra completa
     calc_color = objeto_cercano->getColor().combinar(light_color_attenuation, light_attenuation) * intensity;
 
-    // Añadir el color calculado al color difuso
     return calc_color;
 }
 
@@ -386,21 +351,19 @@ color escena::calcular_translucidez(rayo& ra, vector3 punto_interseccion, vector
         vector3 rayo_vista = ra.getDireccion().normalize();
         vector3 normal = normal_interseccion.normalize();
 
-        float n1, n2; // Índices de refracción
+        float n1, n2; 
         float cos_theta1 = (-rayo_vista).dot_product(normal);
 
         if (cos_theta1 > 0.0)
         {
-            // Rayo entrando al objeto
-            n1 = 1.0; // Índice de refracción del aire
-            n2 = objeto_cercano->getindiceRefraccion(); // Índice de refracción del objeto
+            n1 = 1.0; 
+            n2 = objeto_cercano->getindiceRefraccion(); 
         }
         else
         {
-            // Rayo saliendo del objeto
-            n1 = objeto_cercano->getindiceRefraccion(); // Índice de refracción del objeto
-            n2 = 1.0; // Índice de refracción del aire
-            normal = -normal; // Invertimos la normal para calcular correctamente
+            n1 = objeto_cercano->getindiceRefraccion(); 
+            n2 = 1.0;
+            normal = -normal; 
             cos_theta1 = -cos_theta1;
         }
 

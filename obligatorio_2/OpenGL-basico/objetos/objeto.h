@@ -23,7 +23,7 @@ public:
 	float getbrillo() const { return brillo; }
 	float gettransparaencia() const { return transparaencia; }
 	float getindiceRefraccion() const { return indiceRefraccion; }
-	virtual bool intereseccion(rayo& rayo, vector3& punto, vector3& normal);
+	virtual bool calcular_interseccion(rayo& rayo, vector3& punto, vector3& normal) = 0;
 	color getColor() const {
 		return color(colo.get_x(), colo.get_y(), colo.get_z(), alfa);
 	}

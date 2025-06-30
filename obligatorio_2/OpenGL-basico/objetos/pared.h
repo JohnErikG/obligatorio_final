@@ -24,7 +24,7 @@ public:
 		punto1 = (normal * arbitrario).normalize();
 		punto2 = (punto1 * normal).normalize();
 	}
-	bool intereseccion(rayo& origen, vector3& punto, vector3& normal) override ;
+	bool calcular_interseccion(rayo& origen, vector3& punto, vector3& normal) override ;
 	
 	~pared() override ;
 };

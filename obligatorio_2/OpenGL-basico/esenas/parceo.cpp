@@ -37,10 +37,7 @@ pared* parceo::parsePared(tinyxml2::XMLElement* paredElemen)
 	return new pared(position, normal,color, alfa,brillo, reflex, translucido , indiceRef, ancho, alto);
 }
 
-camara* parceo::parseCamara(tinyxml2::XMLElement* camaraElemen)
-{
-	return nullptr;
-}
+
 
 esfera* parceo::parseEsfera(tinyxml2::XMLElement* esperaElemen)
 {

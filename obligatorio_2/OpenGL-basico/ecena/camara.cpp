@@ -16,12 +16,6 @@ vector3 camara::get_direction() const
 }
 
 
-
-float camara::get_aspect_ratio() const
-{
-    return aspect_ratio_;
-}
-
 float camara::get_horizontal_size() const
 {
     return horizontal_size_;

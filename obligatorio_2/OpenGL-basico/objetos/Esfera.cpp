@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
+bool esfera::calcular_interseccion(rayo& ra, vector3& punto, vector3& normal)
 {
 	vector3 r = ra.getOrigen() - getpos();
 	vector3 RN = ra.getDireccion().normalize();
@@ -11,13 +11,13 @@ bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 	float c = r.dot_product(r) - radio * radio;
 	float discriminante = b * b - 4 * a * c;
 	if (discriminante < 0.0) {
-		return false; //no hay intereseccion
+		return false; 
 	 }
 	float raiz = sqrt(discriminante);
 	float r1 = (-b - raiz) / (2 * a);
 	float r2 = (-b + raiz) / (2 * a);
 	if (r1 < 0 && r2 < 0) {
-		return false; //no hay intereseccion
+		return false;
 	}
 	float t;
 	if (r1 < 0) {
@@ -29,7 +29,7 @@ bool esfera::intereseccion(rayo& ra, vector3& punto, vector3& normal)
 	}
 	punto = ra.getOrigen() + ra.getDireccion().normalize() * t;
 	normal = (punto - getpos()).normalize();
-	return true; //hay intereseccion
+	return true; 
 }
 
 

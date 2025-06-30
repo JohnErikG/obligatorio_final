@@ -7,10 +7,7 @@ enum typo
 };
 class imagen
 {
-
-
 	typo tipo;
-	unsigned int id;
 	int ancho, alto;
 	std::vector <pixel> pixeles;
 public:

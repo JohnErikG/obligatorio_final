@@ -46,7 +46,6 @@ public:
 
     color operator+(const color& c) const;
     color operator*(float f) const;
-    friend std::ostream& operator<<(std::ostream& os, const color& c);
     color operator-(const color& color) const;
 
     color combinar(const color& c, float ratio) const;

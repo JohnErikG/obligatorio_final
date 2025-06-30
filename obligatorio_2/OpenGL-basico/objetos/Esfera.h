@@ -6,14 +6,9 @@ class esfera: public objeto
 
 public:
 	esfera(vector3 pos, float rad, vector3 color, float alfa,float bri, float reflec, float transparencia,float  indiceRef ) : objeto(pos, color, alfa, reflec, transparencia, indiceRef, bri),
-	radio(rad) {
-		// Constructor que inicializa el radio y llama al constructor de la clase base
-	}
+	radio(rad) {}
 
-
-
-
-	bool intereseccion(rayo& rayo, vector3& punto, vector3& normal) override;
+	bool calcular_interseccion(rayo& rayo, vector3& punto, vector3& normal) override;
 
 	~esfera() override;
 };

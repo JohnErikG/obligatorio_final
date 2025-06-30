@@ -1,8 +1,1 @@
-﻿  color.cpp
-  Generando código
-C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\OpenGL-basico\render\imagen.h(28): warning C4715: 'imagen::getpixel': no todas las rutas de acceso de control devuelven un valor
-  98 of 936 functions (10.5%) were compiled, the rest were copied from previous compilation.
-    14 functions were new in current compilation
-    25 functions had inline decision re-evaluated but remain unchanged
-  Generación de código finalizada
-  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Release\OpenGL-basico.exe
+﻿  OpenGL-basico.vcxproj -> C:\Users\erik\source\repos\obligatorio_final\obligatorio_2\Release\OpenGL-basico.exe

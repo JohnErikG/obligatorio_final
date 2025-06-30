@@ -73,9 +73,3 @@ color color::operator+=(const color& c)
     alpha_ += c.alpha_;
     return *this;
 }
-
-std::ostream& operator<<(std::ostream& os, const color& c)
-{
-    os << "Color: (" << c.rojo_ << ", " << c.verde_ << ", " << c.azul_ << ", " << c.alpha_ << ")";
-    return os;
-}

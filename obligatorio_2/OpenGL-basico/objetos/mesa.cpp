@@ -3,7 +3,6 @@
 
 mesa mesa::crearMesa( vector3 pos, vector3 color, float alfa,float bri,  float refle, float translucido, float indiceRef, float alto , float ancho, float prof)
 {
-	//pos vertice sup izquierdo de la mesa 
 	vector3 v0(pos.get_x(), pos.get_y(), pos.get_z());
 	vector3 v1(pos.get_x()+ ancho, pos.get_y(), pos.get_z());
 	vector3 v2(pos.get_x()+ ancho, pos.get_y() + alto, pos.get_z());
@@ -28,19 +27,16 @@ mesa mesa::crearMesa( vector3 pos, vector3 color, float alfa,float bri,  float r
 
 bool mesa::interTri(const vector3& v0, const vector3& v1, const vector3& v2, rayo& rayo, vector3& point, vector3& normal)
 {
-	// Calcula el vector de la arista 1 y la arista 2 del triángulo
+	
 	vector3 edge1 = v1 - v0;
 	vector3 edge2 = v2 - v0;
 
 
-	// Calcula el producto cruzado de las aristas para obtener la normal del triángulo
 	normal = edge1.cross_product(edge2).normalize();
 
-	// Calcula el determinante
 	vector3 h = rayo.getDireccion().cross_product(edge2);
 	double dis = edge1.dot_product(h);
 
-	// el rayo es paralelo al plano del triángulo
 	if (dis > -1e-6 && dis < 1e-6)
 		return false;
 
@@ -48,25 +44,20 @@ bool mesa::interTri(const vector3& v0, const vector3& v1, const vector3& v2, ray
 	vector3 s = rayo.getOrigen() - v0;
 	double u = f * s.dot_product(h);
 
-	// Verifica si el punto de intersección está dentro del triángulo
 	if (u < 0.0 || u > 1.0)
 		return false;
 
 	vector3 q = s.cross_product(edge1);
 	double v = f * rayo.getDireccion().dot_product(q);
 
-	// Verifica si el punto de intersección está dentro del triángulo
 	if (v < 0.0 || u + v > 1.0)
 		return false;
 
-	// Calcula t para determinar la distancia desde el origen del rayo al punto de intersección
 	double t = f * edge2.dot_product(q);
 
-	// Verifica si t es negativo, lo que significa que el punto de intersección está detrás del origen del rayo
 	if (t < 1e-6)
 		return false;
 
-	// Calcula el punto de intersección
 	point = rayo.getOrigen() + rayo.getDireccion() * t;
 
 	return true;
@@ -76,7 +67,7 @@ mesa::~mesa()
 {
 }
 
-bool mesa::intereseccion(rayo& rayo, vector3& punto, vector3& normal){
+bool mesa::calcular_interseccion(rayo& rayo, vector3& punto, vector3& normal){
 	bool hit = false;
 	float closest_t = std::numeric_limits<float>::max();
 	for (size_t i = 0; i < indice.size(); i += 3) // Iteramos sobre los índices de los triángulos

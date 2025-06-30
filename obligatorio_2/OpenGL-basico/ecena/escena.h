@@ -1,12 +1,10 @@
 ﻿#pragma once
-
 #include "camara.h"
 #include "../objetos/objeto.h"
 #include "../render/imagen.h"
 #include "../luz.h"
 #include "SDL.h"
 #include "../esenas/parceo.h"
-
 class escena
 {
     color color_fondo_, ambiente_;
@@ -31,7 +29,7 @@ class escena
 
 public:
     escena(const char* archivo_escena);
-    void Render(SDL_Renderer* renderer, int progreso);
+    void Render( int progreso);
     bool termino();
     imagen get_imagen_final();
     imagen get_imagen_reflexion();
