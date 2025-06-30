@@ -8,10 +8,9 @@
 class escena
 {
     color color_fondo_, ambiente_;
-    float near_, far_;
     int ancho_, alto_;
     camara* camara_;
-    std::vector<objeto*> objects_;
+    std::vector<objeto*> Objetos;
     std::vector<luz*> lights_;
     imagen final_;
     imagen aux_relfexion_;
@@ -37,8 +36,6 @@ public:
     int get_iter();
     int get_ancho();
     int get_alto();
-    float get_far();
-    float get_near();
     color get_color_fondo();
     color calcular_color(rayo& rayo, vector3 punto_interseccion, vector3 normal_interseccion, objeto* objeto_cercano,
         int nivel);

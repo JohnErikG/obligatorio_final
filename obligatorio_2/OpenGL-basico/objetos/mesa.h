@@ -13,8 +13,6 @@ public :
 	{
 	}
 	static mesa crearMesa( vector3 pos, vector3 color, float alfa,float bri, float refle, float translucido, float inidceREf, float alto, float ancho , float prof);
-	bool interTri(const vector3& v0, const vector3& v1, const vector3& v2, rayo& rayo, vector3& point,
-		vector3& normal);
 	bool interQuad(const vector3& v0, const vector3& v1, const vector3& v2, const vector3& v3,
 		rayo& rayo, vector3& point, vector3& normal);
 	bool calcular_interseccion(rayo& rayo, vector3& punto, vector3& normal)override;

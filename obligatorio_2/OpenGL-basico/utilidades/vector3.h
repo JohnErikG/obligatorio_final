@@ -17,18 +17,16 @@ public:
     {
         return length_;
 	}
-    // Getter methods for the coordinates
+
     float get_x() const;
     float get_y() const;
     float get_z() const;
 
-    float magnitude() const;
-    // Setter methods for the coordinates
+
     void set_x(float new_x);
     void set_y(float new_y);
     void set_z(float new_z);
 
-    // Operators
     vector3 operator+(const vector3& other) const;
     void operator+=(const vector3& other);
     vector3 operator -(const vector3& other) const;
@@ -39,16 +37,9 @@ public:
     vector3 operator-() const;
     bool operator==(const vector3& zero) const;
     float dot_product(const vector3& other) const;
-    float angle_with(const vector3& other) const; // returns in radians
-	float getNorm()const; // returns the norm of the vector
+	float getNorm()const;
     vector3 normalize() const;
     vector3 cross_product(const vector3& other) const;
-    static vector3 zero();
-
-    friend std::ostream& operator<<(std::ostream& os, const vector3& v)
-    {
-        os << "(" << v.get_x() << ", " << v.get_y() << ", " << v.get_z() << ")";
-        return os;
-    }
+ 
     void reset();
 };

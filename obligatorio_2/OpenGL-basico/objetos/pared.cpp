@@ -3,7 +3,7 @@
 bool pared::calcular_interseccion(rayo& r, vector3& punto, vector3& nor)  {
 
 	vector3 rN = r.getDireccion().normalize();
-	float d = rN.get_x() * normal.get_x() + rN.get_y() * normal.get_y() + rN.get_z() * normal.get_z(); // producto punto entre la dirección del rayo y la normal del plano
+	float d = rN.get_x() * normal.get_x() + rN.get_y() * normal.get_y() + rN.get_z() * normal.get_z(); 
 	if (fabs(d) < 1e-6) { return false; } 
 
 	vector3 aux = getpos() - r.getOrigen();

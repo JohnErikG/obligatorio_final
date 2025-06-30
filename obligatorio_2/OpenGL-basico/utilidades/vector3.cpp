@@ -4,10 +4,7 @@ float vector3::get_x() const { return x_; }
 float vector3::get_y() const { return y_; }
 float vector3::get_z() const { return z_; }
 
-float vector3::magnitude() const
-{
-    return magnitude_;
-}
+
 
 void vector3::set_x(const float new_x) { x_ = new_x; }
 void vector3::set_y(const float new_y) { y_ = new_y; }
@@ -67,15 +64,6 @@ float vector3::dot_product(const vector3& other) const
     return x_ * other.x_ + y_ * other.y_ + z_ * other.z_;
 }
 
-float vector3::angle_with(const vector3& other) const
-{
-    const auto numerator = this->dot_product(other);
-    const auto denominator = this->magnitude_ * other.magnitude_;
-
-    const auto cosine = numerator / denominator;
-
-    return std::acos(cosine);
-}
 
 float vector3::getNorm() const
 {
@@ -93,10 +81,7 @@ bool vector3::operator==(const vector3& zero) const
     return x_ == zero.x_ && y_ == zero.y_ && z_ == zero.z_;
 }
 
-vector3 vector3::zero()
-{
-    return vector3(0, 0, 0);
-}
+
 vector3 vector3::cross_product(const vector3& other) const
 {
     float  result_x = this->get_y() * other.get_z() - this->get_z() * other.get_y();

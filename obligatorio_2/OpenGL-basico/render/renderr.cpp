@@ -43,7 +43,6 @@ void renderr::guardado(imagen& img)
 
         auto file_name = img.getTipo().append(current_time.append(".png").c_str());
 		std::string filepath = filDir.append(file_name);
-        // Save the image as a PNG file
         FreeImage_Save(FIF_PNG, bitmap, filepath.c_str(), 0);
 
         FreeImage_Unload(bitmap);
