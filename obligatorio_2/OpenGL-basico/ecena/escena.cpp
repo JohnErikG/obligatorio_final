@@ -42,24 +42,21 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
 
     tinyxml2::XMLDocument doc;
     auto res = doc.LoadFile(archivo_escena);
-    tinyxml2::XMLPrinter printer;
-    doc.Print(&printer);
-
-    auto dom_scene = doc.FirstChildElement("document")->FirstChildElement("scene");
+    auto esena1 = doc.FirstChildElement("document")->FirstChildElement("scene");
 
 
-    ancho_ = parceo::parceoInt(dom_scene, "width");
-    alto_ = parceo::parceoInt(dom_scene, "height");
+    ancho_ = parceo::parceoInt(esena1, "width");
+    alto_ = parceo::parceoInt(esena1, "height");
 
     final_ = imagen::vacia(ancho_, alto_, normal);
     aux_relfexion_ = imagen::vacia(ancho_, alto_, reflexion);
     aux_refraccion_ = imagen::vacia(ancho_, alto_, refraccion);
 
 
-    tinyxml2::XMLNode* node = dom_scene->FirstChild();
+    tinyxml2::XMLNode* nodo = esena1->FirstChild();
     do
     {
-        const auto element = node->ToElement();
+        const auto element = nodo->ToElement();
 
         const auto element_type = std::string(element->Name());
         
@@ -70,8 +67,8 @@ aux_refraccion_(0,0, std::vector<pixel>(), refraccion)
         else if (element_type == "ambient") { ambiente_ = parceo::parseColor(element); }
         else { break; }
 
-        node = node->NextSibling();
-    } while (node != nullptr);
+        nodo = nodo->NextSibling();
+    } while (nodo != nullptr);
 
 
 }
