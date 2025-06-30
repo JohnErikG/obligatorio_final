@@ -16,10 +16,6 @@ vector3 camara::get_direction() const
 }
 
 
-float camara::get_horizontal_size() const
-{
-    return horizontal_size_;
-}
 
 float camara::get_length() const
 {
