@@ -2,7 +2,7 @@
 
 vector3 camara::get_position() const
 {
-    return position_;
+    return pos;
 }
 
 vector3 camara::get_up() const
@@ -44,10 +44,10 @@ vector3 camara::get_V() const
 void camara::generate_ray(float u, float v, rayo& ray)
 {
 
-    vector3 pixel = camera_centre_ + (U_ * u);
+    vector3 pixel = centro + (U_ * u);
     pixel = pixel + (V_ * v);
 
    
-    ray.setOrigen(position_);
+    ray.setOrigen(pos);
     ray.setDireccion(pixel);
 }
